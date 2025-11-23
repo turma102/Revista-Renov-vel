@@ -56,7 +56,7 @@
     <p>Informação que transforma o mundo</p>
     <div>
       <audio id="musica-principal" loop>
-        <source src="audio/https://dn721604.ca.archive.org/0/items/poison-tree-320-kbps/Poison%20Tree%20%28320%20kbps%29.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/download/mixkit-forest-temple-1051.mp3" type="audio/mpeg">
         Seu navegador não suporta áudio.
       </audio>
       
@@ -143,7 +143,7 @@
 
 <script>
 // ====================================================================
-// FUNÇÕES PARA MÚSICA (CORRIGIDO)
+// FUNÇÕES PARA MÚSICA (CORRIGIDO PARA LINK EXTERNO)
 // ====================================================================
 
 const musica = document.getElementById('musica-principal');
@@ -161,8 +161,8 @@ function toggleMusica() {
             toggleBtn.innerText = '⏸ Pausar Música';
             estaTocando = true;
         }).catch(error => {
-            console.warn("Não foi possível tocar o áudio. Verifique o caminho do arquivo MP3.", error);
-            alert("Erro ao tentar tocar a música. Por favor, verifique se o arquivo MP3 está na pasta 'audio/' e o nome está correto.");
+            console.error("Erro ao tentar tocar o áudio.", error);
+            alert("Erro ao carregar a música. Verifique sua conexão ou se o link do áudio está ativo.");
         });
     }
 }
@@ -205,6 +205,7 @@ function carregarPergunta() {
         const btn = document.createElement("div");
         btn.className = "opcao";
         btn.innerText = item;
+        // O botão chama verificarResposta(i) e passa a si mesmo (btn) como referência
         btn.onclick = () => verificarResposta(i, btn);
         opcoesDiv.appendChild(btn);
     });
@@ -257,5 +258,3 @@ carregarPergunta();
 
 </body>
 </html>
-
-
