@@ -23,6 +23,10 @@
     .opcao:hover { background: #156edb; }
     #placar { margin-top: 20px; font-size: 20px; font-weight: bold; }
 
+    /* Estilos para Feedback do Quiz */
+    .opcao.correta { background: #28a745; }
+    .opcao.incorreta { background: #dc3545; }
+
     /* ===== ESPAÇO E RECUO NOS PARÁGRAFOS ===== */
     p {
         text-indent: 30px;
@@ -51,21 +55,12 @@
     <h1>REVISTA RENOVÁVEL TURMA 102</h1>
     <p>Informação que transforma o mundo</p>
     <div>
-      <button class="musica-btn" onclick="tocarMusica(0)">🎵 Poison Tree</button>
-      <button class="musica-btn" onclick="tocarMusica(1)">🎧 Sky High</button>
+      <audio id="musica-principal" loop>
+        <source src="audio/Elektroomia - Sky High Progressive House - NoCopyrightSounds.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
       
-      <button class="musica-btn" onclick="pausarMusica()">⏸ Pausar Música</button>
-      
-      <div style="display: none;">
-        <audio id="musica-0" loop>
-          <source src="audio/poison-tree.mp3" type="audio/mpeg">
-          Seu navegador não suporta áudio.
-        </audio>
-        <audio id="musica-1" loop>
-          <source src="audio/Sky High Progressive House - NoCopyrightSounds.mp3" type="audio/mpeg">
-          Seu navegador não suporta áudio.
-        </audio>
-      </div>
+      <button class="musica-btn" id="toggleMusicaBtn" onclick="toggleMusica()">🎵 Tocar Música</button>
     </div>
 </header>
 
@@ -147,35 +142,34 @@
 </div>
 
 <script>
-// NOVO CÓDIGO JAVASCRIPT PARA MÚSICAS
-let musicaAtual = null;
+// ====================================================================
+// FUNÇÕES PARA MÚSICA (CORRIGIDO)
+// ====================================================================
 
-function tocarMusica(indice) {
-    // 1. Para a música que estiver tocando atualmente, se houver
-    if (musicaAtual !== null) {
-        musicaAtual.pause();
-        musicaAtual.currentTime = 0; // Volta ao início para recomeçar se tocar de novo
-    }
-    
-    // 2. Pega a nova música pelo ID (musica-0 ou musica-1)
-    const novaMusica = document.getElementById(musica-${indice});
-    
-    // 3. Toca a nova música
-    // O .catch é para evitar erros de console que podem ocorrer em navegadores que bloqueiam autoplay
-    novaMusica.play().catch(error => {
-        console.log("Erro ao tentar tocar a música (pode ser bloqueio do navegador):", error);
-    });
-    
-    // 4. Atualiza a referência da música atual
-    musicaAtual = novaMusica;
-}
+const musica = document.getElementById('musica-principal');
+const toggleBtn = document.getElementById('toggleMusicaBtn');
+let estaTocando = false;
 
-function pausarMusica() {
-    if (musicaAtual !== null) {
-        musicaAtual.pause();
+function toggleMusica() {
+    if (estaTocando) {
+        musica.pause();
+        toggleBtn.innerText = '🎵 Tocar Música';
+        estaTocando = false;
+    } else {
+        // Tenta tocar a música. Catch evita erro caso o navegador bloqueie.
+        musica.play().then(() => {
+            toggleBtn.innerText = '⏸ Pausar Música';
+            estaTocando = true;
+        }).catch(error => {
+            console.warn("Não foi possível tocar o áudio. Verifique o caminho do arquivo MP3.", error);
+            alert("Erro ao tentar tocar a música. Por favor, verifique se o arquivo MP3 está na pasta 'audio/' e o nome está correto.");
+        });
     }
 }
-// FIM DO NOVO CÓDIGO JAVASCRIPT PARA MÚSICAS
+
+// ====================================================================
+// FUNÇÕES PARA O QUIZ (CORRIGIDO)
+// ====================================================================
 
 const quiz = [
     { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais", "Poluir menos", "Usar tudo sem pensar no futuro", "Desmatar"], correta: 0 },
@@ -194,30 +188,53 @@ let indice = 0;
 let pontos = 0;
 
 function carregarPergunta() {
+    if (indice >= quiz.length) {
+        document.getElementById("pergunta").innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
+        document.getElementById("opcoes").innerHTML = "";
+        document.getElementById("placar").innerText = "";
+        return;
+    }
+
     const p = quiz[indice];
-    document.getElementById("pergunta").innerText = p.pergunta;
+    document.getElementById("pergunta").innerText = (indice + 1) + ". " + p.pergunta;
     const opcoesDiv = document.getElementById("opcoes");
     opcoesDiv.innerHTML = "";
+    
+    // Cria as opções de resposta
     p.opcoes.forEach((item, i) => {
         const btn = document.createElement("div");
         btn.className = "opcao";
         btn.innerText = item;
-        btn.onclick = () => verificarResposta(i);
+        btn.onclick = () => verificarResposta(i, btn);
         opcoesDiv.appendChild(btn);
     });
-}
-
-function verificarResposta(i) {
-    if (i === quiz[indice].correta) pontos++;
-    indice++;
-    if (indice < quiz.length) carregarPergunta();
-    else {
-        document.getElementById("pergunta").innerText = "Quiz finalizado!";
-        document.getElementById("opcoes").innerHTML = "";
-    }
     document.getElementById("placar").innerText = "Pontuação: " + pontos;
 }
 
+function verificarResposta(i, clickedButton) {
+    // 1. Desabilita cliques para a próxima pergunta
+    document.querySelectorAll('.opcao').forEach(btn => btn.onclick = null);
+
+    const opcoes = document.querySelectorAll('.opcao');
+    const respostaCorreta = quiz[indice].correta;
+
+    // 2. Feedback visual
+    if (i === respostaCorreta) {
+        clickedButton.classList.add('correta');
+        pontos++;
+    } else {
+        clickedButton.classList.add('incorreta');
+        opcoes[respostaCorreta].classList.add('correta'); // Mostra a correta
+    }
+
+    // 3. Passa para a próxima pergunta após 1 segundo
+    setTimeout(() => {
+        indice++;
+        carregarPergunta();
+    }, 1000);
+}
+
+// Inicializa o Quiz
 carregarPergunta();
 </script>
 
