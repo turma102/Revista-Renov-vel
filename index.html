@@ -16,21 +16,21 @@
     img { width: 100%; border-radius: 10px; margin: 15px 0; }
     footer { background: #2e8b57; color: white; padding: 20px; text-align: center; margin-top: 40px; }
 
-    /* QUIZ */
+    /* ===== QUIZ ===== */
     #quiz-container { background: white; padding: 25px; border-radius: 10px; margin-top: 40px; box-shadow: 0 0 10px #00000030; }
     #pergunta { font-size: 22px; font-weight: bold; margin-bottom: 15px; }
     .opcao { background: #1e90ff; color: white; padding: 12px; border-radius: 8px; margin: 10px 0; cursor: pointer; font-size: 18px; text-align: center; }
     .opcao:hover { background: #156edb; }
     #placar { margin-top: 20px; font-size: 20px; font-weight: bold; }
 
-    /* Feedback */
+    /* Estilos para Feedback do Quiz */
     .opcao.correta { background: #28a745; }
     .opcao.incorreta { background: #dc3545; }
 
-    /* Parágrafos */
+    /* ===== ESPAÇO E RECUO NOS PARÁGRAFOS ===== */
     p { text-indent: 30px; margin-top: 20px; margin-bottom: 20px; }
 
-    /* Botão Música */
+    /* ===== BOTÕES DE MÚSICA ===== */
     .musica-btn {
       background: #ffffff33;
       color: white;
@@ -41,21 +41,19 @@
       font-size: 14px;
       margin: 5px;
     }
-    .musica-btn:hover {
-      background: #ffffff55;
-    }
+    .musica-btn:hover { background: #ffffff55; }
     </style>
 </head>
-
 <body>
+
 <header>
     <h1>REVISTA RENOVÁVEL TURMA 102</h1>
     <p>Informação que transforma o mundo</p>
 
-    <!-- 🎵 ÁUDIO ADICIONADO CORRETAMENTE -->
+    <!-- Música -->
     <audio id="musica-principal" loop>
-        <source src="https://assets.mixkit.co/music/download/mixkit-forest-temple-1051.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
+      <source src="audio/Poison Tree (320 kbps).mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
     </audio>
 
     <button class="musica-btn" id="toggleMusicaBtn" onclick="toggleMusica()">🎵 Tocar Música</button>
@@ -76,13 +74,11 @@
         <p>Pequenas atitudes ajudam a proteger o planeta.</p>
         <a class="botao" href="#sustentabilidade">Saiba mais</a>
     </div>
-
     <div class="card">
         <h2>🌍 Como Reduzir o Impacto Ambiental</h2>
         <p>Com pequenas mudanças, é possível preservar o meio ambiente.</p>
         <a class="botao" href="#meioambiente">Ler matéria</a>
     </div>
-
     <div class="card">
         <h2>🔥 O Efeito Estufa</h2>
         <p>Descubra como ele funciona e por que está aumentando.</p>
@@ -90,31 +86,57 @@
     </div>
 </div>
 
-<!-- TODAS AS SUAS SEÇÕES PERMANECEM IGUAIS (não removi nada). -->
-
-<div class="container" id="sustentabilidade">
-    <!-- TODO O SEU TEXTO AQUI (não alterei) -->
-</div>
-
-<div class="container" id="meioambiente">
-    <!-- TODO O SEU TEXTO AQUI (não alterei) -->
-</div>
-
-<div class="container" id="efeitoestufa">
-    <!-- TODO O SEU TEXTO AQUI (não alterei) -->
+<div class="container">
+  <div class="secao" id="sustentabilidade">
+    <h1>🌱 O que é Sustentabilidade?</h1>
+    <img src="https://th.bing.com/th/id/OIP.o9j_eTircsJanD23TuPiDQHaE0?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sustentabilidade">
+    <p>Sustentabilidade é a prática de usar os recursos da natureza de forma consciente, garantindo que eles continuem disponíveis para as futuras gerações. Ela envolve equilibrar o desenvolvimento econômico, o bem-estar social e a preservação ambiental, de modo que todas as necessidades humanas possam ser atendidas sem destruir o planeta.</p>
+    <p>Ser sustentável significa reduzir desperdícios, economizar água e energia, separar o lixo para reciclagem, reutilizar materiais e optar por fontes de energia limpa, como a solar, eólica e hidráulica. Também envolve preservar florestas, rios e animais, protegendo os ecossistemas e mantendo a biodiversidade.</p>
+    <img src="https://arsinger.com/wp-content/uploads/2020/06/diferentes-energias-renovables-en-bombilla-Arsinger.jpg" alt="Energias renováveis">
+    <p>Construções sustentáveis são edificações projetadas para minimizar os impactos ambientais, economizar recursos naturais e proporcionar qualidade de vida para as pessoas. Esse tipo de construção considera o uso eficiente de água e energia, a escolha de materiais ecológicos e recicláveis, e a redução de resíduos durante a obra.</p>
+    <p>Entre as práticas mais comuns estão o aproveitamento da luz natural, o uso de painéis solares, a captação e reutilização de água da chuva, a ventilação adequada e o isolamento térmico eficiente, que ajuda a reduzir o consumo de energia para aquecer ou resfriar os ambientes.</p>
+    <p>Além disso, construções sustentáveis podem incorporar materiais de baixo impacto ambiental, como madeira certificada, blocos de terra comprimida, tintas ecológicas e concretos que liberam menos carbono. Também é importante criar áreas verdes e espaços de convivência, que melhoram a qualidade do ar, reduzem o calor e promovem bem-estar.</p>
+    <img src="https://tse1.mm.bing.net/th/id/OIP.d0gguFB0htX8flK38DIwqwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Construções Sustentáveis">
+    <img src="https://static.portaldaindustria.com.br/portaldaindustria/noticias/media/imagem_plugin/whatsappimageat_CkX7RQM.jpg" alt="Construções Sustentáveis">
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
+  </div>
 </div>
 
 <div class="container">
-    <div class="secao" id="quiz-container">
-        <h1>📝 Quiz – Teste seus conhecimentos!</h1>
-        <div id="pergunta">Carregando pergunta...</div>
-        <div id="opcoes"></div>
-        <div id="placar"></div>
-    </div>
+  <div class="secao" id="meioambiente">
+    <h1>🌍 O que é Meio Ambiente?</h1>
+    <img src="https://tissueonline.com.br/novo/wp-content/uploads/2022/07/Cuidar-do-meio-ambiente-e-um-compromisso-de-365-dias-por-ano.jpg" alt="Natureza preservada">
+    <p>O meio ambiente é o conjunto de todos os elementos naturais que nos cercam: o ar que respiramos, a água que bebemos, o solo onde plantamos, as florestas, os animais, os rios e até o clima. Ele é essencial para a nossa sobrevivência, pois tudo o que utilizamos para viver vem da natureza — desde os alimentos até os materiais usados para construir casas, produzir energia e desenvolver tecnologias.</p>
+    <p>Devemos cuidar do meio ambiente porque ele está cada vez mais ameaçado pelas ações humanas. O desmatamento, a poluição do ar e da água, o desperdício de recursos, o uso exagerado de combustíveis fósseis e a produção excessiva de lixo afetam diretamente a saúde do planeta e de todos os seres vivos.</p>
+    <p>Além disso, o mundo enfrenta desafios ambientais cada vez mais complexos. A mudança climática, provocada pelo aumento dos gases de efeito estufa, causa eventos extremos como enchentes, secas prolongadas, tempestades mais intensas e elevação do nível do mar. A perda de biodiversidade ameaça espécies animais e vegetais, comprometendo o equilíbrio dos ecossistemas e a capacidade da natureza de fornecer alimentos, água limpa e outros recursos essenciais.</p>
+    <p>Proteger o meio ambiente traz muitas vantagens. A primeira é a preservação da qualidade de vida: ar mais limpo, água pura, alimentos mais saudáveis e um clima mais equilibrado. Ambientes preservados reduzem o risco de desastres naturais, como enchentes e secas. A biodiversidade também é mantida, garantindo que plantas e animais continuem existindo e desempenhando seu papel nos ecossistemas.</p>
+    <img src="https://comunhao.com.br/wp-content/uploads/2020/07/queimada.jpg" alt="Poluição ambiental">
+    <p>As queimadas têm impactos diretos e graves sobre os seres humanos. A fumaça liberada contém partículas finas e gases tóxicos, como monóxido de carbono e dióxido de enxofre, que podem causar problemas respiratórios, como asma, bronquite e alergias, especialmente em crianças, idosos e pessoas com doenças pré-existentes.</p>
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="secao" id="efeitoestufa">
+    <h1>🔥 O que é o Efeito Estufa?</h1>
+    <img src="https://i.ytimg.com/vi/VABv89_yifo/maxresdefault.jpg" alt="Efeito Estufa">
+    <p>O efeito estufa é um processo natural que mantém a Terra aquecida, tornando a vida possível. A energia do sol aquece o solo, a água e o ar, e parte desse calor é refletido de volta ao espaço.</p>
+    <p>Mas alguns gases, como o CO₂ e o metano, atuam como um “cobertor” para esse calor, retendo-o. Quando a concentração desses gases aumenta por causa das atividades humanas, o “cobertor” fica mais grosso — e a Terra fica mais quente, causando mudanças climáticas.</p>
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="secao" id="quiz-container">
+    <h1>📝 Quiz – Teste seus conhecimentos!</h1>
+    <div id="pergunta">Carregando pergunta...</div>
+    <div id="opcoes"></div>
+    <div id="placar"></div>
+  </div>
 </div>
 
 <script>
-// ======================= MÚSICA ==========================
+// ===== FUNÇÕES PARA MÚSICA =====
 const musica = document.getElementById('musica-principal');
 const toggleBtn = document.getElementById('toggleMusicaBtn');
 let estaTocando = false;
@@ -122,24 +144,31 @@ let estaTocando = false;
 function toggleMusica() {
     if (estaTocando) {
         musica.pause();
-        toggleBtn.innerText = '🎵 Tocar Música';
+        toggleBtn.innerText = "🎵 Tocar Música";
         estaTocando = false;
     } else {
         musica.play().then(() => {
-            toggleBtn.innerText = '⏸ Pausar Música';
+            toggleBtn.innerText = "⏸ Pausar Música";
             estaTocando = true;
-        }).catch(() => {
-            alert("O navegador bloqueou o áudio. Clique novamente.");
+        }).catch(error => {
+            console.error("Erro ao tocar música:", error);
+            alert("Não foi possível tocar a música. Maybe o arquivo não existe ou não carregou.");
         });
     }
 }
 
-// ======================= QUIZ ==========================
+// ===== FUNÇÕES DO QUIZ =====
 const quiz = [
     { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais", "Poluir menos", "Usar tudo sem pensar no futuro", "Desmatar"], correta: 0 },
     { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio", "CO₂", "Nitrogênio", "Hélio"], correta: 1 },
     { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão", "Reciclar", "Desperdiçar água", "Queimar lixo"], correta: 1 },
-    { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar", "Petróleo", "Carvão", "Óleo diesel"], correta: 0 }
+    { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar", "Petróleo", "Carvão", "Óleo diesel"], correta: 0 },
+    { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água", "Dinheiro", "Tempo", "Energia"], correta: 0 },
+    { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar", "Plantar árvores", "Queimar áreas", "Construir casas"], correta: 1 },
+    { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra", "Frio extremo", "Chuva ácida", "Tempestades"], correta: 0 },
+    { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público", "Queimar lixo", "Desmatar", "Poluir rios"], correta: 0 },
+    { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar", "Jogar na rua", "Queimar lixo", "Ignorar"], correta: 0 },
+    { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta", "Não tem importância", "Aumenta a poluição", "Diminui água"], correta: 0 }
 ];
 
 let indice = 0;
@@ -147,8 +176,7 @@ let pontos = 0;
 
 function carregarPergunta() {
     if (indice >= quiz.length) {
-        document.getElementById("pergunta").innerText =
-            "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
+        document.getElementById("pergunta").innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
         document.getElementById("opcoes").innerHTML = "";
         document.getElementById("placar").innerText = "";
         return;
@@ -156,7 +184,6 @@ function carregarPergunta() {
 
     const p = quiz[indice];
     document.getElementById("pergunta").innerText = p.pergunta;
-
     const opcoesDiv = document.getElementById("opcoes");
     opcoesDiv.innerHTML = "";
 
@@ -174,7 +201,6 @@ function carregarPergunta() {
 function verificarResposta(i, botao) {
     const correta = quiz[indice].correta;
     const botoes = document.querySelectorAll(".opcao");
-
     botoes.forEach(b => b.onclick = null);
 
     if (i === correta) {
@@ -195,19 +221,19 @@ carregarPergunta();
 </script>
 
 <div class="container" id="equipe">
-    <div class="secao">
-        <h1>👥 Criadores do Site</h1>
-        <ul style="font-size: 20px;">
-            <li>Ernandes Da Conceição Neves</li>
-            <li>Kamilly Victória Silva Passos</li>
-            <li>Larissa Santos Andrade</li>
-        </ul>
-        <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-    </div>
+  <div class="secao">
+    <h1>👥 Criadores do Site</h1>
+    <ul style="font-size: 20px;">
+        <li>Ernandes Da Conceição Neves</li>
+        <li>Kamilly Victória Silva Passos</li>
+        <li>Larissa Santos Andrade</li>
+    </ul>
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
+  </div>
 </div>
 
 <footer>
-  Revista Renovável — 2025 // Curso Técnico em Energias Renovável
+  Revista Renovável — 2025 // Curso Técnico em Energias Renovável  
   <p>IEMA-PLENO MATÕES</p>
 </footer>
 
