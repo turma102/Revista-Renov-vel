@@ -14,7 +14,7 @@
   nav{background:var(--verde-esc);padding:10px;text-align:center;position:sticky;top:0;z-index:20}
   nav a{color:var(--branco);margin:0 10px;text-decoration:none;font-weight:700;font-size:14px}
   .container{max-width:1100px;margin:18px auto;padding:0 16px}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:18px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:18px}
   .card{background:var(--branco);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
   .card h2{margin:0 0 8px}
   a.botao{display:inline-block;background:var(--verde);color:var(--branco);padding:8px 12px;border-radius:8px;text-decoration:none;margin-top:10px}
@@ -36,6 +36,8 @@
   footer{background:var(--verde);color:var(--branco);text-align:center;padding:18px;margin-top:12px}
   /* responsive */
   @media (max-width:640px){header h1{font-size:20px} nav a{display:inline-block;margin:6px 8px}}
+  /* small helper */
+  .muted{opacity:.85;font-size:14px}
 </style>
 </head>
 <body>
@@ -44,10 +46,14 @@
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
     <div style="text-align:center">
       <h1>REVISTA RENOVÁVEL — TURMA 102</h1>
-      <p>Informação que transforma o mundo</p>
+      <p class="muted">Informação que transforma o mundo</p>
     </div>
     <div>
-      <!-- música: mantenha os arquivos correspondentes na pasta audio/ -->
+      <!-- MÚSICA:
+           Coloque seus arquivos na pasta "audio/" no mesmo nível do index.html.
+           Recomendo os nomes (EXATOS): "Poison Tree (320 kbps).mp3" e "Poison_Tree.mp3"
+           Se um nome for diferente, ajuste as linhas <source> abaixo.
+      -->
       <audio id="musica-principal" loop>
         <source src="audio/Poison Tree (320 kbps).mp3" type="audio/mpeg">
         <source src="audio/Poison_Tree.mp3" type="audio/mpeg">
@@ -117,13 +123,13 @@
     <h1 class="section-title">🌳 Amazônia</h1>
     <img src="https://static.todamateria.com.br/upload/ma/ta/mataamazonica-cke.jpg" alt="Amazônia">
     <h3>Recursos e energias renováveis e não renováveis</h3>
-    <p>Na Amazônia existe potencial para <b>energia solar</b> e <b>biomassa</b>, mas a pressão por madeira, mineração e grandes hidrelétricas trouxe impactos significativos.</p>
+    <p>Na <b>Amazônia</b>, há potencial para <b>energia solar</b> e <b>biomassa</b>, mas também existe pressão por madeira, mineração e grandes hidrelétricas que trazem impactos.</p>
     <h3>Como conservar</h3>
     <p>Unidades de conservação, manejo sustentável e economia extrativista responsável são medidas-chave para proteger o bioma.</p>
     <h3>Vegetação perdida</h3>
-    <p>Desmatamento por corte raso e expansão agropecuária reduziu áreas de seringueiras, castanheiras e muitas espécies locais.</p>
+    <p>O desmatamento reduz áreas com <b>castanheiras</b>, seringueiras e outras espécies nativas.</p>
     <h3>Fauna perdida</h3>
-    <p>Espécies como onça-pintada, araras e botos sofrem com perda de habitat e caça ilegal.</p>
+    <p>Espécies como <b>onça-pintada</b>, araras e botos sofrem com perda de habitat e caça ilegal.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
   </section>
 
@@ -132,152 +138,99 @@
     <h1 class="section-title">🔥 Cerrado</h1>
     <img src="https://static.preparaenem.com/2020/09/vegetacao-cerrado.jpg" alt="Cerrado">
     <h3>Recursos e energias</h3>
-    <p>O Cerrado tem forte produção de <b>energia solar</b> e <b>eólica</b> e é um grande produtor agrícola; planejamento evita perda de biodiversidade.</p>
+    <p>O Cerrado tem forte produção de <b>energia solar</b> e <b>eólica</b> e é grande produtor agrícola; planejamento territorial evita perda de biodiversidade.</p>
     <h3>Como conservar</h3>
-    <p>Proteção de nascentes, corredores ecológicos e manejo do solo são fundamentais.</p>
+    <p>Proteção de nascentes, corredores ecológicos e manejo do solo são essenciais.</p>
     <h3>Vegetação perdida</h3>
     <p>Perda de ipês, pequizeiros e buritis com a conversão agrícola e o avanço de monoculturas.</p>
     <h3>Fauna perdida</h3>
-    <p>Lobo-guará, tamanduá-bandeira e ema perdem habitat por queimadas e expansão humana.</p>
+    <p><b>Lobo-guará</b>, tamanduá-bandeira e ema perdem habitat por queimadas e expansão humana.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
   </section>
 
-  <!-- MATA ATLÂNTICA (ATUALIZADA COM O TEXTO SOLICITADO) -->
+  <!-- MATA ATLÂNTICA (DETALHADA) -->
   <section class="secao" id="mataatlantica">
     <h1 class="section-title">🌿 Mata Atlântica</h1>
-    <img src="https://www.neoenergia.com/documents/d/guest/mata_atlantica_708x324" alt="Mata Atlântica">
+    <img src="https://www.infoescola.com/wp-content/uploads/2010/09/mata-atlantica-1.jpg" alt="Mata Atlântica">
 
     <h3>O uso de recursos e energias renováveis na Mata Atlântica</h3>
     <p>
-      A <b>Mata Atlântica</b> é uma região com grande potencial para o uso de <b>energias renováveis</b>. A <b>energia hidrelétrica</b> é amplamente utilizada devido ao grande número de rios presentes no bioma. Além disso, a <b>energia solar</b> e a <b>energia eólica</b> vêm crescendo em cidades litorâneas e áreas urbanas próximas, reduzindo a dependência de combustíveis fósseis.
-      O aproveitamento sustentável da <b>biomassa</b> também é aplicado em alguns locais, utilizando restos de vegetação de forma controlada para gerar energia sem aumentar o desmatamento.
+      A <b>Mata Atlântica</b> é uma região com potencial para o uso de <b>energias renováveis</b>. A <b>energia hidrelétrica</b> já é amplamente utilizada por causa dos rios do bioma. Além disso, a expansão da <b>energia solar</b> e <b>eólica</b> tem crescido em áreas litorâneas e regiões urbanas, reduzindo a dependência de combustíveis fósseis. O aproveitamento sustentável da <b>biomassa</b> também aparece em pequenos projetos locais, usando resíduos agrícolas de forma controlada.
     </p>
 
     <p>
-      Essas fontes renováveis ajudam a diminuir os impactos ambientais e protegem o que resta de um dos biomas mais ameaçados do país.
+      Essas fontes renováveis ajudam a diminuir os impactos ambientais e proteger o que resta do bioma, que hoje é bastante fragmentado.
     </p>
 
     <h3>O uso de recursos não renováveis na Mata Atlântica</h3>
     <p>
-      Entre os recursos não renováveis mais utilizados no bioma estão os <b>combustíveis fósseis</b> — gasolina, diesel e gás natural — muito usados nas grandes cidades localizadas dentro da Mata Atlântica, como São Paulo, Rio de Janeiro, Salvador e Curitiba.
-      A <b>mineração</b> também ocorre em algumas regiões, removendo áreas de vegetação e causando erosão e poluição da água. Outro problema histórico é o uso intenso de <b>carvão vegetal</b> e lenha, que contribuiu para o desmatamento no passado.
-    </p>
-
-    <p>
-      Essas práticas aumentam a poluição, reduzem a biodiversidade e aceleram a degradação do bioma.
+      Entre os recursos não renováveis mais utilizados estão os <b>combustíveis fósseis</b> — gasolina, diesel e gás natural — muito presentes nas grandes cidades do litoral. A <b>mineração</b> e o uso histórico de <b>carvão vegetal</b> também contribuíram para perdas de vegetação.
     </p>
 
     <h3>Vegetação perdida da Mata Atlântica</h3>
     <p>
-      A Mata Atlântica é um dos biomas mais devastados do Brasil — resta menos de <b>15%</b> da cobertura original. Entre os motivos da perda de vegetação estão:
+      A Mata Atlântica é um dos biomas mais devastados do Brasil — restam menos de <b>15%</b> da cobertura original em muitos mapas. As causas incluem:
     </p>
     <ul>
       <li>desmatamento para agricultura e pasto;</li>
       <li>expansão urbana;</li>
       <li>construção de rodovias;</li>
-      <li>exploração de madeira;</li>
-      <li>queimadas.</li>
+      <li>exploração madeireira e queimadas.</li>
     </ul>
 
-    <p>Entre as espécies vegetais mais ameaçadas estão: <b>Araucária</b>, <b>Pau-brasil</b>, <b>Canela-sassafrás</b>, <b>Jatobá</b>, <b>Jequitibá-rosa</b> e <b>Cedro</b>.</p>
+    <p>
+      Espécies vegetais ameaçadas: <b>Araucária</b>, <b>Pau-brasil</b>, <b>Jequitibá-rosa</b>, <b>Jequitibá</b>, <b>Cedro</b> e muitas outras.
+    </p>
 
     <h3>Fauna perdida da Mata Atlântica</h3>
     <p>
-      A Mata Atlântica abriga uma das maiores biodiversidades do mundo, mas muitas espécies estão ameaçadas pela destruição do habitat. Entre os animais mais prejudicados estão:
-    </p>
-    <ul>
-      <li>Mico-leão-dourado;</li>
-      <li>Onça-pintada;</li>
-      <li>Anta;</li>
-      <li>Preguiça-de-coleira;</li>
-      <li>Jacutinga;</li>
-      <li>Papagaio-de-cara-roxa;</li>
-      <li>Tamanduá-mirim.</li>
-    </ul>
-
-    <p>
-      A caça ilegal, o tráfico de animais e a fragmentação das florestas contribuem para a redução dessas populações.
+      Animais diretamente afetados pela fragmentação e perda de habitat: <b>mico-leão-dourado</b>, <b>onça-pintada</b>, <b>anta</b>, <b>muriqui</b>, <b>jacutinga</b> e várias aves e anfíbios endêmicos.
     </p>
 
     <h3>Propostas de conservação da Mata Atlântica</h3>
     <ol>
       <li>Reflorestamento com espécies nativas.</li>
-      <li>Proteção de nascentes e rios.</li>
-      <li>Controle rigoroso do desmatamento e da caça.</li>
-      <li>Criação e ampliação de parques e reservas naturais.</li>
-      <li>Corredores ecológicos para conectar fragmentos de floresta.</li>
-      <li>Incentivo ao uso de energias renováveis, reduzindo poluição e combustíveis fósseis.</li>
-      <li>Educação ambiental nas escolas e comunidades.</li>
+      <li>Proteção de nascentes e microbacias.</li>
+      <li>Controle do desmatamento e fiscalização.</li>
+      <li>Ampliação e conexão de unidades de conservação (corredores ecológicos).</li>
+      <li>Educação ambiental e políticas de incentivo a energias renováveis.</li>
     </ol>
 
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
   </section>
 
-  <!-- CAATINGA -->
+  <!-- CAATINGA (TEXTO COMPLETO) -->
   <section class="secao" id="caatinga">
     <h1 class="section-title">🌵 Caatinga</h1>
     <img src="https://www.infoescola.com/wp-content/uploads/2010/09/caatinga-1.jpg" alt="Caatinga">
 
     <h3>O uso de recursos e energias renováveis na Caatinga</h3>
     <p>
-      Na <b>Caatinga</b>, o uso de <b>energias renováveis</b>, principalmente a <b>energia solar</b>, tem crescido muito devido ao alto índice de radiação solar da região. Estados como Bahia, Ceará e Pernambuco lideram a instalação de grandes usinas solares, o que ajuda a reduzir o uso de combustíveis fósseis que provocam poluição.
-      Além da energia solar, algumas comunidades rurais têm investido em <b>energia eólica</b>, pois áreas do sertão apresentam ventos constantes. O uso de <b>biomassa</b>, como restos de vegetação seca e cascas agrícolas, também é adotado de forma controlada para gerar energia sem causar danos ao ambiente.
-    </p>
-
-    <p>
-      Essas fontes renováveis ajudam a diminuir o impacto humano no bioma, substituindo práticas antigas como a queima de lenha e o uso de geradores a diesel.
+      Na <b>Caatinga</b>, o uso de <b>energias renováveis</b>, principalmente a <b>energia solar</b>, tem crescido muito devido ao alto índice de radiação solar da região. Estados como Bahia, Ceará e Pernambuco lideram a instalação de usinas solares. Em algumas áreas há também projetos de <b>energia eólica</b> e uso controlado de <b>biomassa</b>.
     </p>
 
     <h3>O uso de recursos não renováveis na Caatinga</h3>
     <p>
-      Na Caatinga, a exploração de <b>lenha</b> e <b>carvão vegetal</b>, considerada uma forma de energia não renovável pela maneira intensa como é extraída, ainda é muito utilizada. Essa prática contribui para o desmatamento e empobrecimento do solo.
-    </p>
-    <p>
-      Além disso, o uso de <b>combustíveis fósseis</b> (diesel, gasolina e gás natural) no transporte e em atividades industriais libera gases que intensificam o aquecimento global, aumentando a seca e tornando o clima ainda mais extremo.
-      A <b>mineração</b> também causa impactos negativos, como perda de vegetação, erosão e contaminação da água.
+      A exploração intensa de <b>lenha</b> e <b>carvão vegetal</b> e o uso de <b>combustíveis fósseis</b> (diesel, gás) contribuem para desmatamento, empobrecimento do solo e agravamento da seca. A <b>mineração</b> também traz impactos locais (erosão e contaminação).
     </p>
 
     <h3>Vegetação perdida da Caatinga</h3>
     <p>
-      A Caatinga já perdeu uma parte significativa de sua <b>vegetação nativa</b> por causa de: desmatamento para produção de carvão, criação de gado, expansão agrícola, queimadas e seca prolongada.
-    </p>
-    <p>Entre as espécies mais ameaçadas estão:</p>
-    <ul>
-      <li>Umburana</li>
-      <li>Aroeira</li>
-      <li>Braúna</li>
-      <li>Pau-ferro</li>
-      <li>Juazeiro (em algumas áreas)</li>
-    </ul>
-    <p>
-      A perda dessa vegetação prejudica o solo, aumenta a desertificação e reduz o habitat dos animais.
+      A Caatinga já perdeu boa parte de sua cobertura nativa por desmatamento, criação de gado, expansão agrícola e queimadas. Espécies em risco incluem <b>Umburana</b>, <b>Aroeira</b>, <b>Braúna</b>, <b>Pau-ferro</b> e <b>Juazeiro</b> em várias áreas.
     </p>
 
     <h3>Fauna perdida da Caatinga</h3>
     <p>
-      A fauna da Caatinga é extremamente adaptada ao clima seco, mas muitas espécies vêm desaparecendo devido ao desmatamento e à caça ilegal.
-    </p>
-    <p>Entre os animais mais ameaçados estão:</p>
-    <ul>
-      <li>Onça-parda</li>
-      <li>Ararinha-azul</li>
-      <li>Tatu-bola</li>
-      <li>Caititu</li>
-      <li>Gambá-de-orelha-branca</li>
-      <li>Veado-catingueiro</li>
-    </ul>
-    <p>
-      A destruição do habitat é o principal motivo da redução dessas espécies.
+      Espécies que têm sofrido: <b>tatu-bola</b>, <b>ararinha-azul</b> (muito afetada no passado), <b>onça-parda</b>, <b>caititu</b> e outros animais locais pela perda de habitat e caça.
     </p>
 
-    <h3>Propostas de conservação da fauna e da flora na Caatinga</h3>
+    <h3>Propostas de conservação da Caatinga</h3>
     <ol>
-      <li>Reflorestamento da vegetação nativa, usando espécies típicas da Caatinga.</li>
-      <li>Proteção das áreas mais secas, evitando o avanço da desertificação.</li>
-      <li>Educação ambiental para conscientizar sobre o uso sustentável da lenha.</li>
-      <li>Criação e fortalecimento de unidades de conservação, como parques e reservas.</li>
-      <li>Monitoramento ambiental com satélites, para identificar desmatamento e queimadas.</li>
-      <li>Incentivo ao uso de energia solar e eólica, reduzindo o uso de combustíveis fósseis.</li>
+      <li>Reflorestamento com espécies nativas.</li>
+      <li>Proteção de nascentes e uso racional da água.</li>
+      <li>Educação ambiental e manejo sustentável da lenha.</li>
+      <li>Criação e fortalecimento de unidades de conservação.</li>
+      <li>Incentivo à energia solar e projetos comunitários de renováveis.</li>
     </ol>
 
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
@@ -290,28 +243,24 @@
 
     <h3>O uso de recursos e energias renováveis no Pantanal</h3>
     <p>
-      No Pantanal, tem crescido o uso de <b>energias renováveis</b> não-hídricas, como a <b>energia solar fotovoltaica</b>, para reduzir a dependência de usinas hidrelétricas que podem impactar fortemente o bioma. Segundo a Ecoa, foram instaladas usinas solares de porte médio no Pantanal para substituir geradores a diesel usados por comunidades locais — cada gerador antes queimava em média <b>18 litros de óleo por dia</b>, gerando poluição e emissões; com a energia solar essa queima caiu muito.
+      No Pantanal, tem crescido o uso de <b>energias renováveis</b> não-hídricas, como a <b>energia solar fotovoltaica</b>, para reduzir a dependência de usinas hidrelétricas que podem impactar fortemente o bioma. Segundo a Ecoa, usinas solares de porte médio substituíram geradores a diesel em comunidades locais — cada gerador queimava em média <b>18 litros de óleo por dia</b>, gerando poluição; com energia solar essa queima caiu muito.
     </p>
 
     <p>
-      Estudos do <b>WWF-Brasil</b> apontam que um mix renovável composto por <b>50% eólica</b>, <b>42% solar</b>, <b>4% biomassa</b> e <b>4% biogás</b> seria ambientalmente mais vantajoso para a bacia do Alto Paraguai (onde está o Pantanal) do que investir em <b>59 Pequenas Centrais Hidrelétricas (PCHs)</b>, oferecendo similar potência com <b>menor impacto ambiental</b> e melhores retornos sociais.
-    </p>
-
-    <p>
-      De acordo com o <b>Senai</b>, parte do Pantanal (Mato Grosso do Sul) tem grande potencial para <b>energia solar</b> e <b>biomassa</b>, favorecendo uma transição energética compatível com a preservação do bioma.
+      Estudos do <b>WWF-Brasil</b> indicam que um mix com <b>50% eólica</b>, <b>42% solar</b>, <b>4% biomassa</b> e <b>4% biogás</b> seria melhor para a bacia do Alto Paraguai do que 59 PCHs, oferecendo menor impacto ambiental e melhor retorno social.
     </p>
 
     <h3>O uso de energias não-renováveis no Pantanal</h3>
     <p>
-      A queima de <b>combustíveis fósseis</b> (petróleo, gás natural e carvão) contribui para o aquecimento global, que aumenta secas e incêndios. Esses incêndios destroem <b>vegetação nativa</b>, matam animais e degradam o solo. Leilões para exploração de petróleo/gás na região geram críticas por ignorarem impactos sobre a biodiversidade local.
+      A queima de <b>combustíveis fósseis</b> (petróleo, gás) intensifica secas e incêndios que destroem vegetação e matam animais. Leilões de exploração de petróleo/gás na região preocupam organizações ambientais.
     </p>
 
     <h3>Propostas de conservação da fauna e da flora no Pantanal</h3>
     <p>Um <b>Plano de Proteção Integrada</b> deve combinar monitoramento, prevenção de queimadas e restauração. Ações centrais:</p>
     <ol>
-      <li><b>Monitoramento ambiental constante</b> — satélites e equipes locais para identificar focos de fogo e alterações nos níveis de água.</li>
-      <li><b>Prevenção ativa de queimadas</b> — aceiros ecológicos, brigadas treinadas e campanhas educativas.</li>
-      <li><b>Conservação e restauração de habitats</b> — proteção de áreas prioritárias e recuperação de áreas degradadas.</li>
+      <li><b>Monitoramento ambiental</b> com satélites e equipes locais.</li>
+      <li><b>Prevenção de queimadas</b> com aceiros ecológicos e brigadas treinadas.</li>
+      <li><b>Conservação e restauração</b> de áreas prioritárias e corredores ecológicos.</li>
     </ol>
 
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
@@ -322,11 +271,11 @@
     <h1 class="section-title">🌾 Pampa</h1>
     <img src="https://www.infoescola.com/wp-content/uploads/2010/09/pampa-1.jpg" alt="Pampa">
     <h3>Recursos e energias</h3>
-    <p>O Pampa apresenta bom potencial para <b>energia eólica</b> e <b>solar</b>. A agricultura sustentável é essencial para proteger os campos nativos.</p>
+    <p>O Pampa tem potencial para <b>energia eólica</b> e <b>solar</b>. A adoção de agricultura sustentável ajuda a proteger campos nativos.</p>
     <h3>Vegetação perdida</h3>
-    <p>Gramíneas e campos naturais diminuíram com a expansão da pecuária e lavoura intensiva.</p>
+    <p>Campos naturais e gramíneas estão sendo substituídos por pastagens e monoculturas intensivas.</p>
     <h3>Fauna perdida</h3>
-    <p>Espécies como o veado-campeiro e aves de campo perdem habitat com a transformação da paisagem.</p>
+    <p>Espécies como o <b>veado-campeiro</b> e aves de campo perdem habitat com a transformação da paisagem.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
   </section>
 
@@ -336,6 +285,7 @@
     <div id="pergunta">Carregando pergunta...</div>
     <div id="opcoes"></div>
     <div id="placar"></div>
+    <p class="muted">Clique na opção correta. O quiz tem 20 perguntas.</p>
   </section>
 
   <!-- EQUIPE -->
@@ -365,7 +315,7 @@ function toggleMusica(){
   if(estaTocando){ musica.pause(); toggleBtn.innerText = "🎵 Tocar Música"; estaTocando=false; }
   else {
     musica.play().then(()=>{ toggleBtn.innerText = "⏸ Pausar Música"; estaTocando=true; })
-    .catch(()=>{ alert("Não foi possível tocar a música — verifique os arquivos em audio/"); });
+    .catch(()=>{ alert("Não foi possível tocar a música — verifique os arquivos em audio/ e os nomes."); });
   }
 }
 
@@ -375,11 +325,73 @@ const quiz = [
   { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio","CO₂","Nitrogênio","Hélio"], correta: 1 },
   { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão","Reciclar","Desperdiçar água","Queimar lixo"], correta: 1 },
   { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar","Petróleo","Carvão","Óleo diesel"], correta: 0 },
-  { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água","Dinheiro","Tempo","Energia (aqui)"], correta: 0 },
+  { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água","Dinheiro","Tempo","Energia"], correta: 0 },
   { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar","Plantar árvores","Queimar áreas","Construir casas"], correta: 1 },
   { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra","Frio extremo","Chuva ácida","Tempestades"], correta: 0 },
   { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público","Queimar lixo","Desmatar","Poluir rios"], correta: 0 },
   { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar","Jogar na rua","Queimar lixo","Ignorar"], correta: 0 },
   { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta","Não tem importância","Aumenta a poluição","Diminui água"], correta: 0 },
-  { pergunta: "O
 
+  { pergunta: "O que é microplástico?", opcoes: ["Plástico gigante no oceano","Partículas menores que 5 mm","Animal marinho","Produto reciclável"], correta: 1 },
+  { pergunta: "Qual animal mais sofre com ingestão de plástico?", opcoes: ["Cachorro","Gato","Tartaruga marinha","Cavalo"], correta: 2 },
+  { pergunta: "Como evitar que plástico chegue ao mar?", opcoes: ["Jogar lixo na rua","Despejar resíduos no rio","Descartar corretamente o lixo","Queimar plástico"], correta: 2 },
+  { pergunta: "O que são redes fantasmas?", opcoes: ["Redes de internet","Redes de pesca abandonadas","Aplicativos","Redes de pesca novas"], correta: 1 },
+  { pergunta: "O que a reciclagem ajuda a reduzir?", opcoes: ["Consumo de água","Quantidade de lixo","Velocidade do vento","Luz solar"], correta: 1 },
+  { pergunta: "Qual é um problema causado pelo plástico no mar?", opcoes: ["Oceano mais limpo","Aumento da biodiversidade","Animais presos e mortos","Água potável"], correta: 2 },
+  { pergunta: "Qual gás é um dos principais responsáveis pelo aquecimento global?", opcoes: ["CO₂","Oxigênio","Hidrogênio","Vapor d'água"], correta: 0 },
+  { pergunta: "Qual atitude NÃO é sustentável?", opcoes: ["Reutilizar garrafa","Plantar árvores","Usar canudos reutilizáveis","Jogar lixo no mar"], correta: 3 },
+  { pergunta: "Qual destes é um exemplo de energia limpa?", opcoes: ["Carvão","Óleo diesel","Energia eólica","Combustível fóssil"], correta: 2 },
+  { pergunta: "Por que devemos preservar o meio ambiente?", opcoes: ["Para garantir recursos no futuro","Para destruir a natureza","Para aumentar poluição","Para extinguir animais"], correta: 0 }
+];
+
+let indice = 0;
+let pontos = 0;
+
+function carregarPergunta() {
+    if (indice >= quiz.length) {
+        document.getElementById("pergunta").innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
+        document.getElementById("opcoes").innerHTML = "";
+        document.getElementById("placar").innerText = "";
+        return;
+    }
+
+    const p = quiz[indice];
+    document.getElementById("pergunta").innerText = p.pergunta;
+    const opcoesDiv = document.getElementById("opcoes");
+    opcoesDiv.innerHTML = "";
+
+    p.opcoes.forEach((texto, i) => {
+        const btn = document.createElement("div");
+        btn.className = "opcao";
+        btn.innerText = texto;
+        btn.onclick = () => verificarResposta(i, btn);
+        opcoesDiv.appendChild(btn);
+    });
+
+    document.getElementById("placar").innerText = "Pontuação: " + pontos;
+}
+
+function verificarResposta(i, botao) {
+    const correta = quiz[indice].correta;
+    const botoes = document.querySelectorAll(".opcao");
+    botoes.forEach(b => b.onclick = null); // desativa cliques extras
+
+    if (i === correta) {
+        botao.classList.add("correta");
+        pontos++;
+    } else {
+        botao.classList.add("incorreta");
+        if (botoes[correta]) botoes[correta].classList.add("correta");
+    }
+
+    setTimeout(() => {
+        indice++;
+        carregarPergunta();
+    }, 900);
+}
+
+document.addEventListener("DOMContentLoaded", carregarPergunta);
+</script>
+
+</body>
+</html>
