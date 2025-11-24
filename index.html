@@ -1,307 +1,385 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Revista Renovável - Biomas Brasileiros</title>
-    <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #eef2f3; }
-    header { background: #2e8b57; color: white; padding: 20px; text-align: center; }
-    nav { background: #206b42; text-align: center; padding: 12px; position: sticky; top: 0; z-index: 10;}
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .container { max-width: 900px; margin: auto; padding: 20px; }
-    .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 10px #00000020; }
-    a.botao { display: inline-block; margin-top: 10px; background: #008b4d; padding: 10px 15px; color: white; border-radius: 5px; text-decoration: none; }
-    a.botao:hover { background: #006f3c; }
-    .secao { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px #00000020; margin-top: 40px; }
-    img { width: 100%; border-radius: 10px; margin: 15px 0; }
-    footer { background: #2e8b57; color: white; padding: 20px; text-align: center; margin-top: 40px; }
-
-    /* ===== QUIZ ===== */
-    #quiz-container { background: white; padding: 25px; border-radius: 10px; margin-top: 40px; box-shadow: 0 0 10px #00000030; }
-    #pergunta { font-size: 22px; font-weight: bold; margin-bottom: 15px; }
-    .opcao { background: #1e90ff; color: white; padding: 12px; border-radius: 8px; margin: 10px 0; cursor: pointer; font-size: 18px; text-align: center; }
-    .opcao:hover { background: #156edb; }
-    #placar { margin-top: 20px; font-size: 20px; font-weight: bold; }
-    .opcao.correta { background: #28a745 !important; }
-    .opcao.incorreta { background: #dc3545 !important; }
-
-    /* ===== ESPAÇO E RECUO NOS PARÁGRAFOS ===== */
-    p { text-indent: 30px; margin-top: 20px; margin-bottom: 20px; }
-
-    /* ===== BOTÕES DE MÚSICA ===== */
-    .musica-btn {
-      background: #ffffff33;
-      color: white;
-      border: 1px solid white;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      margin: 5px;
-    }
-    .musica-btn:hover { background: #ffffff55; }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Revista Renovável — Biomas Brasileiros</title>
+<style>
+  :root{--verde:#2e8b57;--verde-esc:#1f5f3d;--branco:#fff;--fundo:#eef2f3}
+  *{box-sizing:border-box}
+  body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--fundo);color:#222}
+  header{background:var(--verde);color:var(--branco);padding:20px;text-align:center}
+  header h1{margin:0;font-size:24px}
+  header p{margin:6px 0 0;font-size:14px;opacity:.95}
+  nav{background:var(--verde-esc);padding:10px;text-align:center;position:sticky;top:0;z-index:20}
+  nav a{color:var(--branco);margin:0 10px;text-decoration:none;font-weight:700;font-size:14px}
+  .container{max-width:1100px;margin:18px auto;padding:0 16px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:18px}
+  .card{background:var(--branco);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+  .card h2{margin:0 0 8px}
+  a.botao{display:inline-block;background:var(--verde);color:var(--branco);padding:8px 12px;border-radius:8px;text-decoration:none;margin-top:10px}
+  .secao{background:var(--branco);padding:22px;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.06);margin-bottom:20px}
+  h1.section-title{color:var(--verde);margin-top:0}
+  img{width:100%;border-radius:10px;margin:12px 0;display:block}
+  p{line-height:1.55;margin:14px 0;text-indent:20px}
+  ul,ol{margin:8px 0 16px 20px}
+  /* quiz */
+  #quiz-container{padding:12px}
+  #pergunta{font-weight:700;font-size:20px;margin-bottom:12px}
+  .opcao{background:#1e90ff;color:white;padding:12px;border-radius:8px;margin:10px 0;cursor:pointer;text-align:center}
+  .opcao:hover{background:#156edb}
+  .opcao.correta{background:#28a745 !important}
+  .opcao.incorreta{background:#dc3545 !important}
+  #placar{font-weight:700;margin-top:12px}
+  /* music button */
+  .musica-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:white;padding:8px 12px;border-radius:8px;cursor:pointer;margin-left:10px}
+  footer{background:var(--verde);color:var(--branco);text-align:center;padding:18px;margin-top:12px}
+  /* responsive */
+  @media (max-width:640px){header h1{font-size:20px} nav a{display:inline-block;margin:6px 8px}}
+</style>
 </head>
 <body>
 
 <header>
-    <h1>REVISTA RENOVÁVEL TURMA 102</h1>
-    <p>Informação que transforma o mundo</p>
-
-    <!-- Música -->
-    <audio id="musica-principal" loop>
-      <source src="audio/Poison Tree (320 kbps).mp3" type="audio/mpeg">
-      <source src="audio/Poison_Tree.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
-    <button class="musica-btn" id="toggleMusicaBtn" onclick="toggleMusica()">🎵 Tocar Música</button>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+    <div style="text-align:center">
+      <h1>REVISTA RENOVÁVEL — TURMA 102</h1>
+      <p>Informação que transforma o mundo</p>
+    </div>
+    <div>
+      <!-- música: mantenha os arquivos correspondentes na pasta audio/ -->
+      <audio id="musica-principal" loop>
+        <source src="audio/Poison Tree (320 kbps).mp3" type="audio/mpeg">
+        <source src="audio/Poison_Tree.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+      <button class="musica-btn" id="toggleMusicaBtn" onclick="toggleMusica()">🎵 Tocar Música</button>
+    </div>
+  </div>
 </header>
 
 <nav>
-    <a href="#inicio">Início</a>
-    <a href="#amazonia">Amazônia</a>
-    <a href="#cerrado">Cerrado</a>
-    <a href="#caatinga">Caatinga</a>
-    <a href="#mataatlantica">Mata Atlântica</a>
-    <a href="#pantanal">Pantanal</a>
-    <a href="#pampa">Pampa</a>
-    <a href="#quiz-container">Quiz</a>
-    <a href="#equipe">Equipe</a>
+  <a href="#inicio">Início</a>
+  <a href="#amazonia">Amazônia</a>
+  <a href="#cerrado">Cerrado</a>
+  <a href="#mataatlantica">Mata Atlântica</a>
+  <a href="#caatinga">Caatinga</a>
+  <a href="#pantanal">Pantanal</a>
+  <a href="#pampa">Pampa</a>
+  <a href="#quiz-container">Quiz</a>
+  <a href="#equipe">Equipe</a>
 </nav>
 
 <div class="container" id="inicio">
+  <div class="cards">
     <div class="card">
-        <h2>🌳 Amazônia</h2>
-        <p>A <b>Amazônia</b> possui uma grande diversidade de <b>fauna</b> e <b>flora</b> e é vital para a regulação do <b>clima</b> global. Preservar suas <b>florestas</b> e <b>recursos naturais</b> é essencial.</p>
-        <a class="botao" href="#amazonia">Saiba mais</a>
+      <h2>🌳 Amazônia</h2>
+      <p>A <b>Amazônia</b> possui enorme diversidade de <b>fauna</b> e <b>flora</b> e regula o <b>clima</b> global. Preservar suas florestas é essencial.</p>
+      <a class="botao" href="#amazonia">Saiba mais</a>
     </div>
+
     <div class="card">
-        <h2>🌾 Cerrado</h2>
-        <p>O <b>Cerrado</b> é um bioma de <b>vegetação diversificada</b> e animais adaptados à seca. A <b>conservação do solo</b> e da <b>água</b> é fundamental para sua manutenção.</p>
-        <a class="botao" href="#cerrado">Saiba mais</a>
+      <h2>🔥 Cerrado</h2>
+      <p>O <b>Cerrado</b> é o berço das águas, com vegetação adaptada a períodos secos; conservar solo e água é prioritário.</p>
+      <a class="botao" href="#cerrado">Saiba mais</a>
     </div>
+
     <div class="card">
-        <h2>🌵 Caatinga</h2>
-        <p>A <b>Caatinga</b> apresenta <b>vegetação resistente à seca</b> e espécies únicas de <b>fauna</b>. A proteção de suas <b>nascentes</b> e <b>recursos hídricos</b> é essencial.</p>
-        <a class="botao" href="#caatinga">Saiba mais</a>
+      <h2>🌿 Mata Atlântica</h2>
+      <p>A <b>Mata Atlântica</b> tem alta biodiversidade, mas resta pouco da cobertura original — restauração é necessária.</p>
+      <a class="botao" href="#mataatlantica">Saiba mais</a>
     </div>
+
     <div class="card">
-        <h2>🌳 Mata Atlântica</h2>
-        <p>A <b>Mata Atlântica</b> abriga <b>biodiversidade</b> rica, mas está bastante <b>desmatada</b>. É necessário conservar suas <b>florestas remanescentes</b> e proteger a <b>fauna</b>.</p>
-        <a class="botao" href="#mataatlantica">Saiba mais</a>
+      <h2>🌵 Caatinga</h2>
+      <p>A <b>Caatinga</b> é um bioma exclusivamente brasileiro, com vegetação resistente à seca e adaptações únicas.</p>
+      <a class="botao" href="#caatinga">Saiba mais</a>
     </div>
+
     <div class="card">
-        <h2>🌿 Pantanal</h2>
-        <p>O <b>Pantanal</b> é o maior <b>pantanal alagável</b> do mundo, rico em <b>fauna aquática</b> e <b>flora</b>. A preservação de suas <b>águas</b> e <b>ecossistemas</b> é essencial.</p>
-        <a class="botao" href="#pantanal">Saiba mais</a>
+      <h2>🌿 Pantanal</h2>
+      <p>O <b>Pantanal</b> é o maior sistema alagável do planeta, com grande riqueza de vida aquática e terrestre.</p>
+      <a class="botao" href="#pantanal">Saiba mais</a>
     </div>
+
     <div class="card">
-        <h2>🌾 Pampa</h2>
-        <p>O <b>Pampa</b> possui <b>campos naturais</b> e espécies adaptadas. A <b>agricultura sustentável</b> ajuda a conservar a <b>vegetação nativa</b> e a <b>fauna</b>.</p>
-        <a class="botao" href="#pampa">Saiba mais</a>
+      <h2>🌾 Pampa</h2>
+      <p>O <b>Pampa</b> é formado por campos naturais; práticas sustentáveis ajudam a conservar sua vegetação nativa.</p>
+      <a class="botao" href="#pampa">Saiba mais</a>
     </div>
+  </div>
 </div>
 
-<!-- Seções dos Biomas -->
 <div class="container">
-  <div class="secao" id="amazonia">
-    <h1>🌳 Amazônia</h1>
-    <img src="https://www.infoescola.com/wp-content/uploads/2010/09/amazonia_1.jpg" alt="Amazônia">
-    <p>A <b>Amazônia</b> é o maior bioma brasileiro, com abundante <b>vegetação</b> e <b>fauna</b>. Os <b>recursos naturais</b> devem ser conservados para garantir o equilíbrio do <b>clima</b> e a biodiversidade.</p>
-    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
 
-  <div class="secao" id="cerrado">
-    <h1>🌾 Cerrado</h1>
-    <img src="https://www.infoescola.com/wp-content/uploads/2010/09/cerrado-1.jpg" alt="Cerrado">
-    <p>O <b>Cerrado</b> possui <b>vegetação diversificada</b> e <b>fauna adaptada à seca</b>. É fundamental conservar o <b>solo</b> e a <b>água</b> para manter seu ecossistema.</p>
+  <!-- AMAZÔNIA -->
+  <section class="secao" id="amazonia">
+    <h1 class="section-title">🌳 Amazônia</h1>
+    <img src="https://static.todamateria.com.br/upload/ma/ta/mataamazonica-cke.jpg" alt="Amazônia">
+    <h3>Recursos e energias renováveis e não renováveis</h3>
+    <p>Na Amazônia existe potencial para <b>energia solar</b> e <b>biomassa</b>, mas a pressão por madeira, mineração e grandes hidrelétricas trouxe impactos significativos.</p>
+    <h3>Como conservar</h3>
+    <p>Unidades de conservação, manejo sustentável e economia extrativista responsável são medidas-chave para proteger o bioma.</p>
+    <h3>Vegetação perdida</h3>
+    <p>Desmatamento por corte raso e expansão agropecuária reduziu áreas de seringueiras, castanheiras e muitas espécies locais.</p>
+    <h3>Fauna perdida</h3>
+    <p>Espécies como onça-pintada, araras e botos sofrem com perda de habitat e caça ilegal.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
+  </section>
 
-  <div class="secao" id="caatinga">
-    <h1>🌵 Caatinga</h1>
-    <img src="https://www.infoescola.com/wp-content/uploads/2010/09/caatinga-1.jpg" alt="Caatinga">
-    <p>A <b>Caatinga</b> é um bioma semiárido com <b>vegetação resistente</b> e <b>fauna adaptada</b>. Preservar <b>nascentes</b> e <b>recursos hídricos</b> é essencial.</p>
+  <!-- CERRADO -->
+  <section class="secao" id="cerrado">
+    <h1 class="section-title">🔥 Cerrado</h1>
+    <img src="https://static.preparaenem.com/2020/09/vegetacao-cerrado.jpg" alt="Cerrado">
+    <h3>Recursos e energias</h3>
+    <p>O Cerrado tem forte produção de <b>energia solar</b> e <b>eólica</b> e é um grande produtor agrícola; planejamento evita perda de biodiversidade.</p>
+    <h3>Como conservar</h3>
+    <p>Proteção de nascentes, corredores ecológicos e manejo do solo são fundamentais.</p>
+    <h3>Vegetação perdida</h3>
+    <p>Perda de ipês, pequizeiros e buritis com a conversão agrícola e o avanço de monoculturas.</p>
+    <h3>Fauna perdida</h3>
+    <p>Lobo-guará, tamanduá-bandeira e ema perdem habitat por queimadas e expansão humana.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
+  </section>
 
-  <div class="secao" id="mataatlantica">
-    <h1>🌳 Mata Atlântica</h1>
+  <!-- MATA ATLÂNTICA -->
+  <section class="secao" id="mataatlantica">
+    <h1 class="section-title">🌿 Mata Atlântica</h1>
     <img src="https://www.infoescola.com/wp-content/uploads/2010/09/mata-atlantica-1.jpg" alt="Mata Atlântica">
-    <p>A <b>Mata Atlântica</b> abriga grande <b>biodiversidade</b> mas sofre com <b>desmatamento</b>. A proteção das <b>florestas remanescentes</b> e <b>fauna</b> é prioritária.</p>
+    <h3>Recursos e energias</h3>
+    <p>Pequenas usinas solares e projetos de biomassa podem reduzir pressão sobre remanescentes florestais.</p>
+    <h3>Como conservar</h3>
+    <p>Criação de corredores verdes, recuperação de áreas degradadas e proteção aos remanescentes são prioridades.</p>
+    <h3>Vegetação perdida</h3>
+    <p>A Mata Atlântica perdeu grande parte de sua cobertura — muitas árvores como jequitibás e araucárias foram extintas localmente.</p>
+    <h3>Fauna perdida</h3>
+    <p>Espécies endêmicas, como o muriqui, estão ameaçadas devido à fragmentação do habitat.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
+  </section>
 
-  <!-- PANTANAL: Substituído pelo texto completo que você pediu -->
-  <div class="secao" id="pantanal">
-    <h1>🌿 Pantanal</h1>
-    <img src="https://th.bing.com/th/id/R.2ac32b941601ce7ec1eb087be081157b?rik=rDdqSeq5gLdc%2bw&riu=http%3a%2f%2fgeonauta.com.br%2fwp-content%2fuploads%2f2024%2f06%2fPantanal-Mato-Grosso-mt.jpg.webp&ehk=cD4lyGFUgHTxVzPbyopzl3q9uotp%2bL1O7DkbmbuscbI%3d&risl=&pid=ImgRaw&r=0
-    " alt="Pantanal">
+  <!-- CAATINGA (TEXTO COMPLETO INSERIDO) -->
+  <section class="secao" id="caatinga">
+    <h1 class="section-title">🌵 Caatinga</h1>
+    <img src="https://www.infoescola.com/wp-content/uploads/2010/09/caatinga-1.jpg" alt="Caatinga">
+
+    <h3>O uso de recursos e energias renováveis na Caatinga</h3>
+    <p>
+      Na <b>Caatinga</b>, o uso de <b>energias renováveis</b>, principalmente a <b>energia solar</b>, tem crescido muito devido ao alto índice de radiação solar da região. Estados como Bahia, Ceará e Pernambuco lideram a instalação de grandes usinas solares, o que ajuda a reduzir o uso de combustíveis fósseis que provocam poluição.
+      Além da energia solar, algumas comunidades rurais têm investido em <b>energia eólica</b>, pois áreas do sertão apresentam ventos constantes. O uso de <b>biomassa</b>, como restos de vegetação seca e cascas agrícolas, também é adotado de forma controlada para gerar energia sem causar danos ao ambiente.
+    </p>
+
+    <p>
+      Essas fontes renováveis ajudam a diminuir o impacto humano no bioma, substituindo práticas antigas como a queima de lenha e o uso de geradores a diesel.
+    </p>
+
+    <h3>O uso de recursos não renováveis na Caatinga</h3>
+    <p>
+      Na Caatinga, a exploração de <b>lenha</b> e <b>carvão vegetal</b>, considerada uma forma de energia não renovável pela maneira intensa como é extraída, ainda é muito utilizada. Essa prática contribui para o desmatamento e empobrecimento do solo.
+    </p>
+    <p>
+      Além disso, o uso de <b>combustíveis fósseis</b> (diesel, gasolina e gás natural) no transporte e em atividades industriais libera gases que intensificam o aquecimento global, aumentando a seca e tornando o clima ainda mais extremo.
+      A <b>mineração</b> também causa impactos negativos, como perda de vegetação, erosão e contaminação da água.
+    </p>
+
+    <h3>Vegetação perdida da Caatinga</h3>
+    <p>
+      A Caatinga já perdeu uma parte significativa de sua <b>vegetação nativa</b> por causa de: desmatamento para produção de carvão, criação de gado, expansão agrícola, queimadas e seca prolongada.
+    </p>
+    <p>Entre as espécies mais ameaçadas estão:</p>
+    <ul>
+      <li>Umburana</li>
+      <li>Aroeira</li>
+      <li>Braúna</li>
+      <li>Pau-ferro</li>
+      <li>Juazeiro (em algumas áreas)</li>
+    </ul>
+    <p>
+      A perda dessa vegetação prejudica o solo, aumenta a desertificação e reduz o habitat dos animais.
+    </p>
+
+    <h3>Fauna perdida da Caatinga</h3>
+    <p>
+      A fauna da Caatinga é extremamente adaptada ao clima seco, mas muitas espécies vêm desaparecendo devido ao desmatamento e à caça ilegal.
+    </p>
+    <p>Entre os animais mais ameaçados estão:</p>
+    <ul>
+      <li>Onça-parda</li>
+      <li>Ararinha-azul</li>
+      <li>Tatu-bola</li>
+      <li>Caititu</li>
+      <li>Gambá-de-orelha-branca</li>
+      <li>Veado-catingueiro</li>
+    </ul>
+    <p>
+      A destruição do habitat é o principal motivo da redução dessas espécies.
+    </p>
+
+    <h3>Propostas de conservação da fauna e da flora na Caatinga</h3>
+    <ol>
+      <li>Reflorestamento da vegetação nativa, usando espécies típicas da Caatinga.</li>
+      <li>Proteção das áreas mais secas, evitando o avanço da desertificação.</li>
+      <li>Educação ambiental para conscientizar sobre o uso sustentável da lenha.</li>
+      <li>Criação e fortalecimento de unidades de conservação, como parques e reservas.</li>
+      <li>Monitoramento ambiental com satélites, para identificar desmatamento e queimadas.</li>
+      <li>Incentivo ao uso de energia solar e eólica, reduzindo o uso de combustíveis fósseis.</li>
+    </ol>
+
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
+  </section>
+
+  <!-- PANTANAL (TEXTO COMPLETO INSERIDO) -->
+  <section class="secao" id="pantanal">
+    <h1 class="section-title">🌿 Pantanal</h1>
+    <img src="https://i.ibb.co/3hS7HZd/pantanal.jpg" alt="Pantanal">
 
     <h3>O uso de recursos e energias renováveis no Pantanal</h3>
     <p>
-        No Pantanal, tem crescido o uso de <b>energias renováveis</b> não-hídricas, como a <b>energia solar fotovoltaica</b>, para reduzir a dependência de usinas hidrelétricas que podem impactar fortemente o bioma. Segundo a Ecoa, foram instaladas usinas solares de porte médio no Pantanal para substituir geradores a diesel usados por comunidades locais — cada gerador antes queimava em média <b>18 litros de óleo por dia</b>, gerando poluição e emissões; com a energia solar essa queima caiu muito.
+      No Pantanal, tem crescido o uso de <b>energias renováveis</b> não-hídricas, como a <b>energia solar fotovoltaica</b>, para reduzir a dependência de usinas hidrelétricas que podem impactar fortemente o bioma. Segundo a Ecoa, foram instaladas usinas solares de porte médio no Pantanal para substituir geradores a diesel usados por comunidades locais — cada gerador antes queimava em média <b>18 litros de óleo por dia</b>, gerando poluição e emissões; com a energia solar essa queima caiu muito.
     </p>
 
     <p>
-        Além disso, estudos do <b>WWF-Brasil</b> apontam que um mix renovável composto por <b>50% eólica</b>, <b>42% solar</b>, <b>4% biomassa</b> e <b>4% biogás</b> seria ambientalmente mais vantajoso para a bacia do Alto Paraguai (onde está o Pantanal) do que investir em <b>59 Pequenas Centrais Hidrelétricas (PCHs)</b>. Esse mix ofereceria não só a mesma potência, mas também um retorno social e econômico positivo e <b>menor impacto ambiental</b>.
+      Estudos do <b>WWF-Brasil</b> apontam que um mix renovável composto por <b>50% eólica</b>, <b>42% solar</b>, <b>4% biomassa</b> e <b>4% biogás</b> seria ambientalmente mais vantajoso para a bacia do Alto Paraguai (onde está o Pantanal) do que investir em <b>59 Pequenas Centrais Hidrelétricas (PCHs)</b>, oferecendo similar potência com <b>menor impacto ambiental</b> e melhores retornos sociais.
     </p>
 
     <p>
-        De acordo com o <b>Senai</b>, o estado do Mato Grosso do Sul — que abriga parte do Pantanal — tem grande potencial para <b>energia solar</b> e <b>biomassa</b>, o que pode favorecer uma transição energética mais limpa e compatível com a preservação do bioma.
+      De acordo com o <b>Senai</b>, parte do Pantanal (Mato Grosso do Sul) tem grande potencial para <b>energia solar</b> e <b>biomassa</b>, favorecendo uma transição energética compatível com a preservação do bioma.
     </p>
 
     <h3>O uso de energias não-renováveis no Pantanal</h3>
     <p>
-        No Pantanal, a queima de <b>combustíveis fósseis</b> como petróleo, gás natural e carvão contribui para as <b>mudanças climáticas</b>, o que agrava secas e incêndios no bioma. Segundo o Instituto Humanitas Unisinos (IHU), a queima desses combustíveis promove o aquecimento global, aumentando a intensidade e a frequência de incêndios no Pantanal.
-    </p>
-
-    <p>
-        Esses incêndios destroem <b>vegetação nativa</b>, matam animais e degradam o solo, prejudicando a <b>fauna</b> e a <b>flora</b>. Além disso, há riscos ambientais diretos relacionados à exploração de petróleo e gás: o leilão de áreas para exploração desses recursos na região pantaneira tem sido criticado por organizações ambientais por ignorar os potenciais impactos sobre a biodiversidade local.
-    </p>
-
-    <p>
-        Portanto, o uso de fontes não renováveis no Pantanal leva não só à emissão de gases que favorecem o aquecimento global, mas também a impactos imediatos sobre os ecossistemas locais, tornando urgente a redução das fontes fósseis e a busca por alternativas mais limpas.
+      A queima de <b>combustíveis fósseis</b> (petróleo, gás natural e carvão) contribui para o aquecimento global, que aumenta secas e incêndios. Esses incêndios destroem <b>vegetação nativa</b>, matam animais e degradam o solo. Leilões para exploração de petróleo/gás na região geram críticas por ignorarem impactos sobre a biodiversidade local.
     </p>
 
     <h3>Propostas de conservação da fauna e da flora no Pantanal</h3>
-    <p>
-        A melhor forma de prevenir a perda da fauna e da flora no Pantanal é adotar um <b>Plano de Proteção Integrada</b>, que combine monitoramento contínuo, controle de queimadas e conservação dos habitats naturais. Esse plano teria três ações centrais:
-    </p>
-
+    <p>Um <b>Plano de Proteção Integrada</b> deve combinar monitoramento, prevenção de queimadas e restauração. Ações centrais:</p>
     <ol>
-        <li><b>Monitoramento ambiental constante:</b> uso de satélites e equipes locais para identificar focos de fogo, áreas desmatadas e alterações no nível das águas.</li>
-        <li><b>Prevenção ativa de queimadas:</b> implementação de aceiros ecológicos, formação de brigadas treinadas e campanhas educativas para evitar incêndios acidentais.</li>
-        <li><b>Conservação de habitats e restauração:</b> proteção de áreas prioritárias, recuperação de áreas degradadas, e ações para proteger nascentes e corredores ecológicos que garantam a movimentação da fauna.</li>
+      <li><b>Monitoramento ambiental constante</b> — satélites e equipes locais para identificar focos de fogo e alterações nos níveis de água.</li>
+      <li><b>Prevenção ativa de queimadas</b> — aceiros ecológicos, brigadas treinadas e campanhas educativas.</li>
+      <li><b>Conservação e restauração de habitats</b> — proteção de áreas prioritárias e recuperação de áreas degradadas.</li>
     </ol>
 
-    <p>
-        Essas medidas integradas ajudariam a reduzir os danos causados por incêndios e pela exploração inadequada de recursos, protegendo tanto a <b>vegetação</b> quanto a <b>fauna</b> do Pantanal.
-    </p>
-
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
+  </section>
 
-  <div class="secao" id="pampa">
-    <h1>🌾 Pampa</h1>
+  <!-- PAMPA -->
+  <section class="secao" id="pampa">
+    <h1 class="section-title">🌾 Pampa</h1>
     <img src="https://www.infoescola.com/wp-content/uploads/2010/09/pampa-1.jpg" alt="Pampa">
-    <p>O <b>Pampa</b> apresenta <b>campos naturais</b> e espécies adaptadas. A <b>agricultura sustentável</b> protege a <b>vegetação nativa</b> e a <b>fauna</b>.</p>
+    <h3>Recursos e energias</h3>
+    <p>O Pampa apresenta bom potencial para <b>energia eólica</b> e <b>solar</b>. A agricultura sustentável é essencial para proteger os campos nativos.</p>
+    <h3>Vegetação perdida</h3>
+    <p>Gramíneas e campos naturais diminuíram com a expansão da pecuária e lavoura intensiva.</p>
+    <h3>Fauna perdida</h3>
+    <p>Espécies como o veado-campeiro e aves de campo perdem habitat com a transformação da paisagem.</p>
     <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
-</div>
+  </section>
 
-<!-- Quiz -->
-<div class="container"> 
-  <div class="secao" id="quiz-container">
-    <h1>📝 Quiz – Teste seus conhecimentos!</h1>
+  <!-- QUIZ -->
+  <section class="secao" id="quiz-container">
+    <h1 class="section-title">📝 Quiz – Teste seus conhecimentos!</h1>
     <div id="pergunta">Carregando pergunta...</div>
     <div id="opcoes"></div>
     <div id="placar"></div>
-  </div>
-</div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section class="secao" id="equipe">
+    <h1 class="section-title">👥 Criadores do Site</h1>
+    <ul>
+      <li>Ernandes Da Conceição Neves</li>
+      <li>Kamilly Victória Silva Passos</li>
+      <li>Larissa Santos Andrade</li>
+    </ul>
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
+  </section>
+
+</div> <!-- /container -->
+
+<footer>
+  Revista Renovável — 2025 • Curso Técnico em Energias Renováveis — IEMA-PLENO MATÕES
+</footer>
 
 <script>
-// ===== FUNÇÕES PARA MÚSICA =====
+/* ===== MÚSICA ===== */
 const musica = document.getElementById('musica-principal');
 const toggleBtn = document.getElementById('toggleMusicaBtn');
 let estaTocando = false;
-
-function toggleMusica() {
-    if (estaTocando) {
-        musica.pause();
-        toggleBtn.innerText = "🎵 Tocar Música";
-        estaTocando = false;
-    } else {
-        musica.play().then(() => {
-            toggleBtn.innerText = "⏸ Pausar Música";
-            estaTocando = true;
-        }).catch(error => {
-            console.error("Erro ao tocar música:", error);
-            alert("Não foi possível tocar a música. Talvez o arquivo não exista ou não carregou.");
-        });
-    }
+function toggleMusica(){
+  if(!musica) return;
+  if(estaTocando){ musica.pause(); toggleBtn.innerText = "🎵 Tocar Música"; estaTocando=false; }
+  else {
+    musica.play().then(()=>{ toggleBtn.innerText = "⏸ Pausar Música"; estaTocando=true; })
+    .catch(()=>{ alert("Não foi possível tocar a música — verifique os arquivos em audio/"); });
+  }
 }
 
-// ===== FUNÇÕES DO QUIZ =====
+/* ===== QUIZ COMPLETO (20 perguntas) ===== */
 const quiz = [
-    { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais", "Poluir menos", "Usar tudo sem pensar no futuro", "Desmatar"], correta: 0 },
-    { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio", "CO₂", "Nitrogênio", "Hélio"], correta: 1 },
-    { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão", "Reciclar", "Desperdiçar água", "Queimar lixo"], correta: 1 },
-    { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar", "Petróleo", "Carvão", "Óleo diesel"], correta: 0 },
-    { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água", "Dinheiro", "Tempo", "Energia"], correta: 0 },
-    { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar", "Plantar árvores", "Queimar áreas", "Construir casas"], correta: 1 },
-    { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra", "Frio extremo", "Chuva ácida", "Tempestades"], correta: 0 },
-    { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público", "Queimar lixo", "Desmatar", "Poluir rios"], correta: 0 },
-    { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar", "Jogar na rua", "Queimar lixo", "Ignorar"], correta: 0 },
-    { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta", "Não tem importância", "Aumenta a poluição", "Diminui água"], correta: 0 }
+  { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais","Poluir menos","Usar tudo sem pensar no futuro","Desmatar"], correta: 0 },
+  { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio","CO₂","Nitrogênio","Hélio"], correta: 1 },
+  { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão","Reciclar","Desperdiçar água","Queimar lixo"], correta: 1 },
+  { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar","Petróleo","Carvão","Óleo diesel"], correta: 0 },
+  { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água","Dinheiro","Tempo","Energia (aqui)" ], correta: 0 },
+  { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar","Plantar árvores","Queimar áreas","Construir casas"], correta: 1 },
+  { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra","Frio extremo","Chuva ácida","Tempestades"], correta: 0 },
+  { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público","Queimar lixo","Desmatar","Poluir rios"], correta: 0 },
+  { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar","Jogar na rua","Queimar lixo","Ignorar"], correta: 0 },
+  { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta","Não tem importância","Aumenta a poluição","Diminui água"], correta: 0 },
+  { pergunta: "O que é microplástico?", opcoes: ["Plástico gigante no oceano","Partículas menores que 5 mm","Animal marinho","Produto reciclável"], correta: 1 },
+  { pergunta: "Qual animal mais sofre com ingestão de plástico?", opcoes: ["Cachorro","Gato","Tartaruga marinha","Cavalo"], correta: 2 },
+  { pergunta: "Como evitar que plástico chegue ao mar?", opcoes: ["Jogar lixo na rua","Despejar resíduos no rio","Descartar corretamente o lixo","Queimar plástico"], correta: 2 },
+  { pergunta: "O que são redes fantasmas?", opcoes: ["Redes de internet","Redes de pesca abandonadas","Aplicativos","Redes de pesca novas"], correta: 1 },
+  { pergunta: "O que a reciclagem ajuda a reduzir?", opcoes: ["Consumo de água","Quantidade de lixo","Velocidade do vento","Luz solar"], correta: 1 },
+  { pergunta: "Qual é um problema causado pelo plástico no mar?", opcoes: ["Oceano mais limpo","Aumento da biodiversidade","Animais presos e mortos","Água potável"], correta: 2 },
+  { pergunta: "Qual gás é um dos principais responsáveis pelo aquecimento global?", opcoes: ["CO₂","Oxigênio","Hidrogênio","Vapor d'água"], correta: 0 },
+  { pergunta: "Qual atitude NÃO é sustentável?", opcoes: ["Reutilizar garrafa","Plantar árvores","Usar canudos reutilizáveis","Jogar lixo no mar"], correta: 3 },
+  { pergunta: "Qual destes é um exemplo de energia limpa?", opcoes: ["Carvão","Óleo diesel","Energia eólica","Combustível fóssil"], correta: 2 },
+  { pergunta: "Por que devemos preservar o meio ambiente?", opcoes: ["Para garantir recursos no futuro","Para destruir a natureza","Para aumentar poluição","Para extinguir animais"], correta: 0 }
 ];
 
 let indice = 0;
 let pontos = 0;
 
-function carregarPergunta() {
-    if (indice >= quiz.length) {
-        document.getElementById("pergunta").innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
-        document.getElementById("opcoes").innerHTML = "";
-        document.getElementById("placar").innerText = "";
-        return;
-    }
-
-    const p = quiz[indice];
-    document.getElementById("pergunta").innerText = p.pergunta;
-    const opcoesDiv = document.getElementById("opcoes");
+function carregarPergunta(){
+  const perguntaEl = document.getElementById("pergunta");
+  const opcoesDiv = document.getElementById("opcoes");
+  const placarEl = document.getElementById("placar");
+  if(indice >= quiz.length){
+    perguntaEl.innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
     opcoesDiv.innerHTML = "";
-
-    p.opcoes.forEach((texto, i) => {
-        const btn = document.createElement("div");
-        btn.className = "opcao";
-        btn.innerText = texto;
-        btn.onclick = () => verificarResposta(i, btn);
-        opcoesDiv.appendChild(btn);
-    });
-
-    document.getElementById("placar").innerText = "Pontuação: " + pontos;
+    placarEl.innerText = "";
+    return;
+  }
+  const p = quiz[indice];
+  perguntaEl.innerText = p.pergunta;
+  opcoesDiv.innerHTML = "";
+  p.opcoes.forEach((texto,i)=>{
+    const btn = document.createElement("div");
+    btn.className = "opcao";
+    btn.innerText = texto;
+    btn.onclick = ()=> verificarResposta(i,btn);
+    opcoesDiv.appendChild(btn);
+  });
+  placarEl.innerText = "Pontuação: " + pontos;
 }
 
-function verificarResposta(i, botao) {
-    const correta = quiz[indice].correta;
-    const botoes = document.querySelectorAll(".opcao");
-    botoes.forEach(b => b.onclick = null);
-
-    if (i === correta) {
-        botao.classList.add("correta");
-        pontos++;
-    } else {
-        botao.classList.add("incorreta");
-        if (botoes[correta]) botoes[correta].classList.add("correta");
-    }
-
-    setTimeout(() => {
-        indice++;
-        carregarPergunta();
-    }, 1000);
+function verificarResposta(i,botao){
+  const correta = quiz[indice].correta;
+  const botoes = document.querySelectorAll(".opcao");
+  botoes.forEach(b => b.onclick = null);
+  if(i === correta){
+    botao.classList.add("correta");
+    pontos++;
+  } else {
+    botao.classList.add("incorreta");
+    if(botoes[correta]) botoes[correta].classList.add("correta");
+  }
+  setTimeout(()=>{ indice++; carregarPergunta(); }, 900);
 }
 
-carregarPergunta();
+document.addEventListener("DOMContentLoaded", ()=>{ carregarPergunta(); });
 </script>
-
-<div class="container" id="equipe">
-  <div class="secao">
-    <h1>👥 Criadores do Site</h1>
-    <ul style="font-size: 20px;">
-        <li>Ernandes Da Conceição Neves</li>
-        <li>Kamilly Victória Silva Passos</li>
-        <li>Larissa Santos Andrade</li>
-    </ul>
-    <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-  </div>
-</div>
-
-<footer>
-  Revista Renovável — 2025 // Curso Técnico em Energias Renováveis  
-  <p>IEMA-PLENO MATÕES</p>
-</footer>
 
 </body>
 </html>
-
+```0
