@@ -1,236 +1,215 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revista Renovável</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #eef2f3; } 
-        header { background: #2e8b57; color: white; padding: 20px; text-align: center; } 
-        nav { background: #206b42; text-align: center; padding: 12px; position: sticky; top: 0; z-index: 10;} 
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; } 
-        .container { max-width: 900px; margin: auto; padding: 20px; } 
-        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 10px #00000020; } 
-        a.botao { display: inline-block; margin-top: 10px; background: #008b4d; padding: 10px 15px; color: white; border-radius: 5px; text-decoration: none; } 
-        a.botao:hover { background: #006f3c; } 
-        .secao { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px #00000020; margin-top: 40px; } 
-        img { width: 100%; border-radius: 10px; margin: 15px 0; } 
-        footer { background: #2e8b57; color: white; padding: 20px; text-align: center; margin-top: 40px; } 
-        /* ===== QUIZ ===== */ 
-        #quiz-container { background: white; padding: 25px; border-radius: 10px; margin-top: 40px; box-shadow: 0 0 10px #00000030; } 
-        #pergunta { font-size: 22px; font-weight: bold; margin-bottom: 15px; } 
-        .opcao { background: #1e90ff; color: white; padding: 12px; border-radius: 8px; margin: 10px 0; cursor: pointer; font-size: 18px; text-align: center; } 
-        .opcao:hover { background: #156edb; } 
-        #placar { margin-top: 20px; font-size: 20px; font-weight: bold; } 
-        /* Estilos para Feedback do Quiz */ 
-        .opcao.correta { background: #28a745 !important; } 
-        .opcao.incorreta { background: #dc3545 !important; } 
-        /* ===== ESPAÇO E RECUO NOS PARÁGRAFOS ===== */ 
-        p { text-indent: 30px; margin-top: 20px; margin-bottom: 20px; } 
-        /* ===== BOTÕES DE MÚSICA ===== */ 
-        .musica-btn { background: #ffffff33; color: white; border: 1px solid white; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; margin: 5px; } 
-        .musica-btn:hover { background: #ffffff55; } 
-    </style>
-</head>
-<body>
-    <header>
-        <h1>REVISTA RENOVÁVEL TURMA 102</h1>
-        <p>Informação que <b>transforma o mundo</b></p>
-        <audio id="musica-principal" loop>
-            <source src="audio/Poison Tree (320 kbps).mp3" type="audio/mpeg">
-            <source src="audio/Poison_Tree.mp3" type="audio/mpeg">
-            Seu navegador não suporta áudio.
-        </audio>
-        <button class="musica-btn" id="toggleMusicaBtn" onclick="toggleMusica()">🎵 Tocar Música</button>
-    </header>
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Revista Renovável</title>  
+    <style>  
+    body { font-family: Arial, sans-serif; margin: 0; background: #eef2f3; }  
+    header { background: #2e8b57; color: white; padding: 20px; text-align: center; }  
+    nav { background: #206b42; text-align: center; padding: 12px; position: sticky; top: 0; z-index: 10;}  
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }  
+    .container { max-width: 900px; margin: auto; padding: 20px; }  
+    .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 10px #00000020; }  
+    a.botao { display: inline-block; margin-top: 10px; background: #008b4d; padding: 10px 15px; color: white; border-radius: 5px; text-decoration: none; }  
+    a.botao:hover { background: #006f3c; }  
+    .secao { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px #00000020; margin-top: 40px; }  
+    img { width: 100%; border-radius: 10px; margin: 15px 0; }  
+    footer { background: #2e8b57; color: white; padding: 20px; text-align: center; margin-top: 40px; }  /* ===== QUIZ ===== */  
+#quiz-container { background: white; padding: 25px; border-radius: 10px; margin-top: 40px; box-shadow: 0 0 10px #00000030; }  
+#pergunta { font-size: 22px; font-weight: bold; margin-bottom: 15px; }  
+.opcao { background: #1e90ff; color: white; padding: 12px; border-radius: 8px; margin: 10px 0; cursor: pointer; font-size: 18px; text-align: center; }  
+.opcao:hover { background: #156edb; }  
+#placar { margin-top: 20px; font-size: 20px; font-weight: bold; }  
 
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#sustentabilidade">Sustentabilidade</a>
-        <a href="#meioambiente">Meio Ambiente</a>
-        <a href="#efeitoestufa">Efeito Estufa</a>
-        <a href="#poluicaomarinha">Crise Marinha</a>
-        <a href="#quiz-container">Quiz</a>
-        <a href="#equipe">Equipe</a>
-    </nav>
+/* Estilos para Feedback do Quiz */  
+.opcao.correta { background: #28a745 !important; }  
+.opcao.incorreta { background: #dc3545 !important; }  
 
-    <div class="container" id="inicio">
-        <div class="card">
-            <h2>🌱 Ações Sustentáveis do Dia a Dia</h2>
-            <p><b>Pequenas atitudes</b> ajudam a <b>proteger o planeta</b>.</p>
-            <a class="botao" href="#sustentabilidade">Saiba mais</a>
-        </div>
-        <div class="card">
-            <h2>🌍 Como Reduzir o Impacto Ambiental</h2>
-            <p>Com pequenas mudanças, é possível <b>preservar o meio ambiente</b>.</p>
-            <a class="botao" href="#meioambiente">Ler matéria</a>
-        </div>
-        <div class="card">
-            <h2>🔥 O Efeito Estufa</h2>
-            <p> Descubra como ele funciona e por que está <b>aumentando</b>.</p>
-            <a class="botao" href="#efeitoestufa">Saiba mais</a>
-        </div>
-        <div class="card">
-            <h2>🌊 Crise Marinha</h2>
-            <p>Entenda o problema do <b>microplástico</b> e as <b>soluções</b> para proteger a <b>vida aquática</b>.</p>
-            <a class="botao" href="#poluicaomarinha">Saiba mais</a>
-        </div>
-    </div>
+/* ===== ESPAÇO E RECUO NOS PARÁGRAFOS ===== */  
+p { text-indent: 30px; margin-top: 20px; margin-bottom: 20px; }  
 
-    <div class="container">
-        <div class="secao" id="sustentabilidade">
-            <h1>🌱 O que é Sustentabilidade?</h1>
-            [attachment_0](attachment)
-            <img src="https://th.bing.com/th/id/OIP.o9j_eTircsJanD23TuPiDQHaE0?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sustentabilidade">
-            <p><b>Sustentabilidade é a prática</b> de usar os <b>recursos da natureza de forma consciente</b>, garantindo que eles continuem disponíveis para as <b>futuras gerações</b>. Ela envolve equilibrar o <b>desenvolvimento econômico</b>, o <b>bem-estar social</b> e a <b>preservação ambiental</b>, de modo que todas as necessidades humanas possam ser atendidas sem destruir o planeta.</p>
-            <p>Ser sustentável significa <b>reduzir desperdícios</b>, <b>economizar água e energia</b>, <b>separar o lixo para reciclagem</b>, reutilizar materiais e optar por <b>fontes de energia limpa</b>, como a solar, eólica e hidráulica. Também envolve <b>preservar florestas, rios e animais</b>, protegendo os ecossistemas e mantendo a <b>biodiversidade</b>.</p>
-            <img src="https://arsinger.com/wp-content/uploads/2020/06/diferentes-energias-renovables-en-bombilla-Arsinger.jpg" alt="Energias renováveis">
-            <p><b>Construções sustentáveis</b> são edificações projetadas para <b>minimizar os impactos ambientais</b>, <b>economizar recursos naturais</b> e proporcionar qualidade de vida para as pessoas. Esse tipo de construção considera o <b>uso eficiente de água e energia</b>, a escolha de <b>materiais ecológicos e recicláveis</b>, e a redução de resíduos durante a obra.</p>
-            <p>Entre as práticas mais comuns estão o <b>aproveitamento da luz natural</b>, o uso de <b>painéis solares</b>, a <b>captação e reutilização de água da chuva</b>, a ventilação adequada e o <b>isolamento térmico eficiente</b>, que ajuda a reduzir o consumo de energia para aquecer ou resfriar os ambientes.</p>
-            <p>Além disso, construções sustentáveis podem incorporar <b>materiais de baixo impacto ambiental</b>, como madeira certificada, blocos de terra comprimida, tintas ecológicas e concretos que liberam menos carbono. Também é importante criar <b>áreas verdes</b> e espaços de convivência, que melhoram a qualidade do ar, reduzem o calor e promovem bem-estar.</p>
-            <img src="https://tse1.mm.bing.net/th/id/OIP.d0gguFB0htX8flK38DIwqwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Construções Sustentáveis">
-            <img src="https://static.portaldaindustria.com.br/portaldaindustria/noticias/media/imagem_plugin/whatsappimageat_CkX7RQM.jpg" alt="Construções Sustentáveis">
-            <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-        </div>
-    </div>
+/* ===== BOTÕES DE MÚSICA ===== */  
+.musica-btn {  
+  background: #ffffff33;  
+  color: white;  
+  border: 1px solid white;  
+  padding: 8px 15px;  
+  border-radius: 8px;  
+  cursor: pointer;  
+  font-size: 14px;  
+  margin: 5px;  
+}  
+.musica-btn:hover { background: #ffffff55; }  
+</style>
 
-    <div class="container">
-        <div class="secao" id="meioambiente">
-            <h1>🌍 Meio Ambiente: Definição, Desafios e o Caminho para a Preservação</h1>
-            <img src="https://tissueonline.com.br/novo/wp-content/uploads/2022/07/Cuidar-do-meio-ambiente-e-um-compromisso-de-365-dias-por-ano.jpg" alt="Natureza preservada">
-            <p>O meio ambiente é o conjunto de <b>todos os elementos naturais</b> que nos cercam: o ar que respiramos, a água que bebemos, o solo onde plantamos, as florestas, os animais, os rios e até o clima. Ele é <b>essencial para a nossa sobrevivência</b>, pois tudo o que utilizamos para viver vem da natureza.</p>
-            <p>Devemos cuidar do meio ambiente porque ele está cada vez mais <b>ameaçado pelas ações humanas</b>. O <b>desmatamento</b>, a <b>poluição do ar e da água</b>, o desperdício de recursos, o uso exagerado de combustíveis fósseis e a <b>produção excessiva de lixo</b> afetam diretamente a <b>saúde do planeta</b> e de todos os seres vivos.</p>
-            <p>Além disso, o mundo enfrenta desafios ambientais cada vez mais complexos. A <b>mudança climática</b>, provocada pelo aumento dos gases de efeito estufa, causa <b>eventos extremos</b> como enchentes, secas prolongadas, tempestades mais intensas e elevação do nível do mar. A <b>perda de biodiversidade</b> ameaça espécies animais e vegetais, comprometendo o <b>equilíbrio dos ecossistemas</b> e a capacidade da natureza de fornecer recursos essenciais.</p>
-            <p>Proteger o meio ambiente traz muitas vantagens. A primeira é a <b>preservação da qualidade de vida</b>: ar mais limpo, água pura, alimentos mais saudáveis e um clima mais equilibrado. Ambientes preservados reduzem o risco de desastres naturais. A biodiversidade também é mantida.</p>
-            <img src="https://comunhao.com.br/wp-content/uploads/2020/07/queimada.jpg" alt="Poluição ambiental">
-            <p>As <b>queimadas</b> têm impactos diretos e graves sobre os seres humanos. A <b>fumaça</b> liberada contém partículas finas e <b>gases tóxicos</b>, que podem causar <b>problemas respiratórios</b>, como asma, bronquite e alergias, especialmente em grupos de risco.</p>
-            <p>Para <b>reduzir o impacto ambiental</b>, é fundamental adotar atitudes simples que fazem grande diferença. Entre elas estão: <b>economizar água e energia</b>, <b>evitar o desperdício de alimentos</b>, <b>separar o lixo e reciclar</b> sempre que possível, <b>reduzir o uso de plástico descartável</b>, reutilizar materiais, optar por meios de transporte menos poluentes e preservar áreas verdes. Quando <b>cada pessoa faz sua parte</b>, o planeta inteiro se beneficia.</p>
-            <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-        </div>
-    </div>
+</head>  
+<body>  <header>  
+    <h1>REVISTA RENOVÁVEL TURMA 102</h1>  
+    <p>Informação que transforma o mundo</p>  <!-- Música: duas fontes (fallback) -->  
+<audio id="musica-principal" loop>  
+  <source src="audio/Poison Tree (320 kbps).mp3" type="audio/mpeg">  
+  <source src="audio/Poison_Tree.mp3" type="audio/mpeg">  
+  Seu navegador não suporta áudio.  
+</audio>  
 
-    <div class="container">
-        <div class="secao" id="efeitoestufa">
-            <h1>🔥 O que é o Efeito Estufa?</h1>
-            [attachment_1](attachment)
-            <img src="https://i.ytimg.com/vi/VABv89_yifo/maxresdefault.jpg" alt="Efeito Estufa">
-            <p>O <b>efeito estufa é um processo natural</b> que <b>mantém a Terra aquecida</b>, tornando a vida possível. A energia do sol aquece o solo, a água e o ar, e parte desse calor é refletido de volta ao espaço.</p>
-            <p>Mas alguns gases, como o <b>CO₂ e o metano</b>, atuam como um “cobertor” para esse calor, <b>retendo-o</b>. Quando a concentração desses gases aumenta por causa das <b>atividades humanas</b>, o “cobertor” fica mais grosso — e a Terra fica <b>mais quente</b>, causando <b>mudanças climáticas</b>.</p>
-            <a class="botao" href="#inicio">⬅ Voltar ao início</a>
-        </div>
-    </div>
+<button class="musica-btn" id="toggleMusicaBtn" onclick="toggleMusica()">🎵 Tocar Música</button>
 
-    <div class="container">
-        <div class="secao" id="poluicaomarinha">
-            <h1>🌊 O Mar Pede Socorro: A Crise do Plástico e o Caminho para a Solução</h1>
-            <img src="https://cienciahoje.org.br/wp-content/uploads/2024/03/AdobeStock_278282717-1536x1024.jpeg" alt="Sustentabilidade">
-            <p>Os oceanos são a <b>maior fonte de vida da Terra</b>, responsáveis por <b>regular o clima global</b>, produzir grande parte do oxigênio que respiramos e sustentar ecossistemas complexos. No entanto, eles estão sendo sufocados por uma crise crescente: a <b>poluição marinha</b>. Esse problema vai muito além do lixo visível; trata-se de uma <b>contaminação profunda e silenciosa</b> que ameaça a <b>biodiversidade e a saúde humana</b>. Hoje, <b>trilhões de partículas de plástico</b> flutuam nas águas do planeta, vindas principalmente de fontes terrestres. O <b>Brasil</b>, infelizmente, está entre os maiores contribuintes para esse cenário.</p>
-            <p>Entre as maiores vítimas dessa crise ambiental estão as <b>tartarugas marinhas</b>. Uma das ameaças mais graves enfrentadas por elas é a <b>ingestão de plástico</b>. Sacolas plásticas flutuando no oceano são facilmente confundidas com águas-vivas. Ao ingerir esse material, o animal sente-se saciado, mas não recebe nutrientes, o que leva à fraqueza, <b>desnutrição e, muitas vezes, à morte por inanição</b>. Outro risco comum é o <b>emaranhamento em redes de pesca abandonadas</b>, conhecidas como <b>redes fantasmas</b>.</p>
-            
-            <img src="https://www.pensamentoverde.com.br/wp-content/uploads/2018/02/1-mar-2.jpg" alt="Sustentabilidade">
-            <p>Além dos resíduos visíveis, existe um risco ainda mais preocupante: os <b>microplásticos</b>. São partículas <b>menores que 5 mm</b> que surgem da quebra de materiais maiores. Por serem extremamente pequenos, acabam sendo <b>ingeridos por peixes, crustáceos, aves</b> e praticamente <b>toda a vida marinha</b>, entrando assim na <b>cadeia alimentar</b>. Já foram encontrados microplásticos na <b>água potável, no sal de cozinha, no ar</b>, no sangue humano e até em órgãos internos. No oceano, essas partículas ainda têm a capacidade de atrair toxinas e metais pesados.</p>
-            <p>Diante desse cenário preocupante, é essencial adotar medidas para <b>reduzir a poluição marinha</b>. A primeira delas é <b>diminuir o consumo de plástico de uso único</b>, optando por garrafas reutilizáveis e sacolas de pano. O <b>descarte correto dos resíduos</b> é igualmente importante: <b>separar o lixo</b>, respeitar os dias de coleta seletiva e <b>nunca jogar resíduos em rios, bueiros ou praias</b>. Também é fundamental fazer escolhas de consumo mais conscientes. A <b>fiscalização e retirada de redes fantasmas</b> do oceano é outra medida indispensável.</p>
-            <p>A poluição marinha <b>não é um problema distante</b>; ela afeta o clima, a economia, a biodiversidade e a <b>saúde humana</b>. Proteger o ambiente marinho é <b>proteger a vida como um todo</b>. Cada atitude, por menor que pareça, faz diferença.</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="secao" id="quiz-container">
-            <h1>📝 Quiz – Teste seus conhecimentos!</h1>
-            <div id="pergunta">Carregando pergunta...</div>
-            <div id="opcoes"></div>
-            <div id="placar"></div>
-        </div>
-    </div>
-
-    <script>
-        // ===== FUNÇÕES PARA MÚSICA =====
-        const musica = document.getElementById('musica-principal');
-        const toggleBtn = document.getElementById('toggleMusicaBtn');
-        let estaTocando = false;
-
-        function toggleMusica() {
-            if (estaTocando) {
-                musica.pause();
-                toggleBtn.innerText = "🎵 Tocar Música";
-                estaTocando = false;
-            } else {
-                musica.play().then(() => {
-                    toggleBtn.innerText = "⏸ Pausar Música";
-                    estaTocando = true;
-                }).catch(error => {
-                    console.error("Erro ao tocar música:", error);
-                    alert("Não foi possível tocar a música. Talvez o arquivo não exista ou não carregou.");
-                });
-            }
-        }
-
-        // ===== FUNÇÕES DO QUIZ =====
-        // Substituí e incluí o quiz completo com 20 perguntas
-        const quiz = [
-            { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais", "Poluir menos", "Usar tudo sem pensar no futuro", "Desmatar"], correta: 0 },
-            { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio", "CO₂", "Nitrogênio", "Hélio"], correta: 1 },
-            { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão", "Reciclar", "Desperdiçar água", "Queimar lixo"], correta: 1 },
-            { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar", "Petróleo", "Carvão", "Óleo diesel"], correta: 0 },
-            { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água", "Dinheiro", "Tempo", "Energia"], correta: 0 },
-            { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar", "Plantar árvores", "Queimar áreas", "Construir casas"], correta: 1 },
-            { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra", "Frio extremo", "Chuva ácida", "Tempestades"], correta: 0 },
-            { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público", "Queimar lixo", "Desmatar", "Poluir rios"], correta: 0 },
-            { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar", "Jogar na rua", "Queimar lixo", "Ignorar"], correta: 0 },
-            { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta", "Não tem importância", "Aumenta a poluição", "Diminui água"], correta: 0 },
-            // Novas perguntas
-            { pergunta: "O que é microplástico?", opcoes: ["Plástico gigante no oceano", "Partículas menores que 5 mm", "Animal marinho", "Produto reciclável"], correta: 1 },
-            { pergunta: "Qual animal mais sofre com ingestão de plástico?", opcoes: ["Cachorro", "Gato", "Tartaruga marinha", "Cavalo"], correta: 2 },
-            { pergunta: "Como evitar que plástico chegue ao mar?", opcoes: ["Jogar lixo na rua", "Despejar resíduos no rio", "Descartar corretamente o lixo", "Queimar plástico"], correta: 2 },
-            { pergunta: "O que são redes fantasmas?", opcoes: ["Redes de internet", "Redes de pesca abandonadas", "Aplicativos", "Redes de pesca novas"], correta: 1 },
-            { pergunta: "O que a reciclagem ajuda a reduzir?", opcoes: ["Consumo de água", "Quantidade de lixo", "Velocidade do vento", "Luz solar"], correta: 1 },
-            { pergunta: "Qual é um problema causado pelo plástico no mar?", opcoes: ["Oceano mais limpo", "Aumento da biodiversidade", "Animais presos e mortos", "Água potável"], correta: 2 },
-            { pergunta: "Qual gás é um dos principais responsáveis pelo aquecimento global?", opcoes: ["CO₂", "Oxigênio", "Hidrogênio", "Vapor d'água"], correta: 0 },
-            { pergunta: "Qual atitude NÃO é sustentável?", opcoes: ["Reutilizar garrafa", "Plantar árvores", "Usar canudos reutilizáveis", "Jogar lixo no mar"], correta: 3 },
-            { pergunta: "Qual destes é um exemplo de energia limpa?", opcoes: ["Carvão", "Óleo diesel", "Energia eólica", "Combustível fóssil"], correta: 2 },
-            { pergunta: "Por que devemos preservar o meio ambiente?", opcoes: ["Para garantir recursos no futuro", "Para destruir a natureza", "Para aumentar poluição", "Para extinguir animais"], correta: 0 }
-        ];
-
-        let indice = 0;
-        let pontos = 0;
-
-        function carregarPergunta() {
-            if (indice >= quiz.length) {
-                document.getElementById("pergunta").innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;
-                document.getElementById("opcoes").innerHTML = "";
-                document.getElementById("placar").innerText = "";
-                return;
-            }
-
-            const p = quiz[indice];
-            document.getElementById("pergunta").innerText = p.pergunta;
-            const opcoesDiv = document.getElementById("opcoes");
-            opcoesDiv.innerHTML = "";
-
-            p.opcoes.forEach((texto, i) => {
-                const btn = document.createElement("div");
-                btn.className = "opcao";
-                btn.innerText = texto;
-                btn.onclick = () => verificarResposta(i, btn);
-                opcoesDiv.appendChild(btn);
-            });
-
-            document.getElementById("placar").innerText = "Pontuação: " + pontos;
-        }
-
-        function verificarResposta(i, botao) {
-            const correta = quiz[indice].correta;
-            const botoes = document.querySelectorAll(".opcao");
-            botoes.forEach(b => b.onclick = null); // desativa cliques extras
-
-            if (i === correta) {
-                botao.classList.add("correta");
-                pontos++;
-            } else {
-                botao.classList.add("incorreta");
-                // mostra a resposta correta se existir
-                if (botoes[correta]) botoes[correta].classList.add("correta");
-            }
-
-            // avança após 1s
-            setTimeout(() => {
+</header>  <nav>  
+    <a href="#inicio">Início</a>  
+    <a href="#sustentabilidade">Sustentabilidade</a>  
+    <a href="#meioambiente">Meio Ambiente</a>  
+    <a href="#efeitoestufa">Efeito Estufa</a>  
+    <a href="#poluicaomarinha">Crise Marinha</a>  
+    <a href="#quiz-container">Quiz</a>  
+    <a href="#equipe">Equipe</a>  
+</nav>  <div class="container" id="inicio">  
+    <div class="card">  
+        <h2>🌱 Ações Sustentáveis do Dia a Dia</h2>  
+        <p>Pequenas atitudes ajudam a proteger o planeta.</p>  
+        <a class="botao" href="#sustentabilidade">Saiba mais</a>  
+    </div>  
+    <div class="card">  
+        <h2>🌍 Como Reduzir o Impacto Ambiental</h2>  
+        <p>Com pequenas mudanças, é possível preservar o meio ambiente.</p>  
+        <a class="botao" href="#meioambiente">Ler matéria</a>  
+    </div>  
+    <div class="card">  
+        <h2>🔥 O Efeito Estufa</h2>  
+        <p> Descubra como ele funciona e por que está aumentando.</p>  
+        <a class="botao" href="#efeitoestufa">Saiba mais</a>  
+    </div>  
+     <div class="card">  
+        <h2>🌊 Crise Marinha</h2>  
+        <p>Entenda o problema do microplástico e as soluções para proteger a vida aquática.</p>  
+        <a class="botao" href="#poluicaomarinha">Saiba mais</a>  
+    </div>  
+</div>  <div class="container">  
+  <div class="secao" id="sustentabilidade">  
+    <h1>🌱 O que é Sustentabilidade?</h1>  
+    <img src="https://th.bing.com/th/id/OIP.o9j_eTircsJanD23TuPiDQHaE0?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sustentabilidade">  
+    <p>Sustentabilidade é a prática de usar os recursos da natureza de forma consciente, garantindo que eles continuem disponíveis para as futuras gerações. Ela envolve equilibrar o desenvolvimento econômico, o bem-estar social e a preservação ambiental, de modo que todas as necessidades humanas possam ser atendidas sem destruir o planeta.</p>  
+    <p>Ser sustentável significa reduzir desperdícios, economizar água e energia, separar o lixo para reciclagem, reutilizar materiais e optar por fontes de energia limpa, como a solar, eólica e hidráulica. Também envolve preservar florestas, rios e animais, protegendo os ecossistemas e mantendo a biodiversidade.</p>  
+    <img src="https://arsinger.com/wp-content/uploads/2020/06/diferentes-energias-renovables-en-bombilla-Arsinger.jpg" alt="Energias renováveis">  
+    <p>Construções sustentáveis são edificações projetadas para minimizar os impactos ambientais, economizar recursos naturais e proporcionar qualidade de vida para as pessoas. Esse tipo de construção considera o uso eficiente de água e energia, a escolha de materiais ecológicos e recicláveis, e a redução de resíduos durante a obra.</p>  
+    <p>Entre as práticas mais comuns estão o aproveitamento da luz natural, o uso de painéis solares, a captação e reutilização de água da chuva, a ventilação adequada e o isolamento térmico eficiente, que ajuda a reduzir o consumo de energia para aquecer ou resfriar os ambientes.</p>  
+    <p>Além disso, construções sustentáveis podem incorporar materiais de baixo impacto ambiental, como madeira certificada, blocos de terra comprimida, tintas ecológicas e concretos que liberam menos carbono. Também é importante criar áreas verdes e espaços de convivência, que melhoram a qualidade do ar, reduzem o calor e promovem bem-estar.</p>  
+    <img src="https://tse1.mm.bing.net/th/id/OIP.d0gguFB0htX8flK38DIwqwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Construções Sustentáveis">  
+    <img src="https://static.portaldaindustria.com.br/portaldaindustria/noticias/media/imagem_plugin/whatsappimageat_CkX7RQM.jpg" alt="Construções Sustentáveis">  
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>  
+  </div>  
+</div>  <div class="container">  
+  <div class="secao" id="meioambiente">  
+    <h1>🌍 Meio Ambiente: Definição, Desafios e o Caminho para a Preservação</h1>  
+    <img src="https://tissueonline.com.br/novo/wp-content/uploads/2022/07/Cuidar-do-meio-ambiente-e-um-compromisso-de-365-dias-por-ano.jpg" alt="Natureza preservada">  
+    <p>O meio ambiente é o conjunto de todos os elementos naturais que nos cercam: o ar que respiramos, a água que bebemos, o solo onde plantamos, as florestas, os animais, os rios e até o clima. Ele é essencial para a nossa sobrevivência, pois tudo o que utilizamos para viver vem da natureza — desde os alimentos até os materiais usados para construir casas, produzir energia e desenvolver tecnologias.</p>  
+    <p>Devemos cuidar do meio ambiente porque ele está cada vez mais ameaçado pelas ações humanas. O desmatamento, a poluição do ar e da água, o desperdício de recursos, o uso exagerado de combustíveis fósseis e a produção excessiva de lixo afetam diretamente a saúde do planeta e de todos os seres vivos.</p>  
+    <p>Além disso, o mundo enfrenta desafios ambientais cada vez mais complexos. A mudança climática, provocada pelo aumento dos gases de efeito estufa, causa eventos extremos como enchentes, secas prolongadas, tempestades mais intensas e elevação do nível do mar. A perda de biodiversidade ameaça espécies animais e vegetais, comprometendo o equilíbrio dos ecossistemas e a capacidade da natureza de fornecer alimentos, água limpa e outros recursos essenciais.</p>  
+    <p>Proteger o meio ambiente traz muitas vantagens. A primeira é a preservação da qualidade de vida: ar mais limpo, água pura, alimentos mais saudáveis e um clima mais equilibrado. Ambientes preservados reduzem o risco de desastres naturais, como enchentes e secas. A biodiversidade também é mantida, garantindo que plantas e animais continuem existindo e desempenhando seu papel nos ecossistemas.</p>  
+    <img src="https://comunhao.com.br/wp-content/uploads/2020/07/queimada.jpg" alt="Poluição ambiental">  
+    <p>As queimadas têm impactos diretos e graves sobre os seres humanos. A fumaça liberada contém partículas finas e gases tóxicos, como monóxido de carbono e dióxido de enxofre, que podem causar problemas respiratórios, como asma, bronquite e alergias, especialmente em crianças, idosos e pessoas com doenças pré-existentes.</p>  
+    <p>Para reduzir o impacto ambiental, é fundamental adotar atitudes simples que fazem grande diferença. Entre elas estão: economizar água e energia, evitar o desperdício de alimentos, separar o lixo e reciclar sempre que possível, reduzir o uso de plástico descartável, reutilizar materiais, optar por meios de transporte menos poluentes e preservar áreas verdes. Também é importante denunciar queimadas ilegais, não jogar lixo em áreas naturais e apoiar práticas sustentáveis. Quando cada pessoa faz sua parte, o planeta inteiro se beneficia.</p>  
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>  
+  </div>  
+</div>  <div class="container">  
+  <div class="secao" id="efeitoestufa">  
+    <h1>🔥 O que é o Efeito Estufa?</h1>  
+    <img src="https://i.ytimg.com/vi/VABv89_yifo/maxresdefault.jpg" alt="Efeito Estufa">  
+    <p>O efeito estufa é um processo natural que mantém a Terra aquecida, tornando a vida possível. A energia do sol aquece o solo, a água e o ar, e parte desse calor é refletido de volta ao espaço.</p>  
+    <p>Mas alguns gases, como o CO₂ e o metano, atuam como um “cobertor” para esse calor, retendo-o. Quando a concentração desses gases aumenta por causa das atividades humanas, o “cobertor” fica mais grosso — e a Terra fica mais quente, causando mudanças climáticas.</p>  
+    <a class="botao" href="#inicio">⬅ Voltar ao início</a>  
+  </div>  
+</div>  <div class="container">  
+  <div class="secao" id="poluicaomarinha">  
+    <h1>🌊 O Mar Pede Socorro: A Crise do Plástico e o Caminho para a Solução</h1>  
+    <img src="https://cienciahoje.org.br/wp-content/uploads/2024/03/AdobeStock_278282717-1536x1024.jpeg" alt="Sustentabilidade">  
+    <p>Os oceanos são a maior fonte de vida da Terra, responsáveis por regular o clima global, produzir grande parte do oxigênio que respiramos e sustentar ecossistemas complexos. No entanto, eles estão sendo sufocados por uma crise crescente: a poluição marinha. Esse problema vai muito além do lixo visível nas praias; trata-se de uma contaminação profunda e silenciosa que ameaça a biodiversidade e a saúde humana. Hoje, trilhões de partículas de plástico flutuam nas águas do planeta, vindas principalmente de fontes terrestres, como descartes inadequados em rios, falhas na coleta de lixo e má gestão de resíduos urbanos. O Brasil, infelizmente, está entre os maiores contribuintes para esse cenário, despejando milhões de toneladas de plástico nos mares todos os anos.</p>  
+    <p>Entre as maiores vítimas dessa crise ambiental estão as tartarugas marinhas, animais que existem há mais de 100 milhões de anos e desempenham papéis essenciais no equilíbrio dos ecossistemas. Uma das ameaças mais graves enfrentadas por elas é a ingestão de plástico. Sacolas plásticas flutuando no oceano são facilmente confundidas com águas-vivas, principal alimento de espécies como a tartaruga-de-couro. Ao ingerir esse material, o animal sente-se saciado, mas não recebe nutrientes, o que leva à fraqueza, desnutrição e, muitas vezes, à morte por inanição. Além disso, fragmentos rígidos podem perfurar órgãos internos e causar lesões fatais. Outro risco comum é o emaranhamento em redes de pesca abandonadas, conhecidas como redes fantasmas, além de anéis plásticos, cordas e cabos que flutuam no mar. Esses resíduos podem provocar asfixia ao impedir que a tartaruga suba para respirar, causar ferimentos graves com possibilidade de amputação das nadadeiras, dificultar a natação e a alimentação e levar o animal à exaustão, tornando-o presa fácil ou incapaz de migrar. Quando as tartarugas sofrem, isso é um alerta de que todo o oceano também está em perigo.</p>  
+    <img src="https://www.pensamentoverde.com.br/wp-content/uploads/2018/02/1-mar-2.jpg" alt="Sustentabilidade">  
+    <p>Além dos resíduos visíveis, existe um risco ainda mais preocupante: os microplásticos. São partículas menores que 5 mm que surgem da quebra de materiais maiores, de produtos cosméticos, tecidos sintéticos e outros itens do cotidiano. Por serem extremamente pequenos, acabam sendo ingeridos por peixes, crustáceos, aves e praticamente toda a vida marinha, entrando assim na cadeia alimentar. Já foram encontrados microplásticos na água potável, no sal de cozinha, no ar, no sangue humano e até em órgãos internos, levantando sérias preocupações sobre impactos na saúde. No oceano, essas partículas ainda têm a capacidade de atrair toxinas e metais pesados presentes na água, aumentando os riscos quando são ingeridas por animais.</p>  
+    <p>Diante desse cenário preocupante, é essencial adotar medidas para reduzir a poluição marinha. A primeira delas é diminuir o consumo de plástico de uso único, optando por garrafas reutilizáveis, sacolas de pano, canudos e talheres reutilizáveis, entre outras alternativas. O descarte correto dos resíduos é igualmente importante: separar o lixo, respeitar os dias de coleta seletiva e nunca jogar resíduos em rios, bueiros ou praias ajuda a impedir que toneladas de plástico cheguem ao mar. Também é fundamental fazer escolhas de consumo mais conscientes, preferindo produtos com menos embalagens e evitando itens desnecessários feitos de plástico. A fiscalização e retirada de redes fantasmas do oceano é outra medida indispensável, já que essas redes são responsáveis por capturar e matar inúmeros animais marinhos todos os anos. Participar de mutirões de limpeza e apoiar projetos de conservação também contribui diretamente para a saúde dos oceanos.</p>  
+    <p>A poluição marinha não é um problema distante; ela afeta o clima, a economia, a biodiversidade e a saúde humana. As tartarugas marinhas simbolizam o impacto dessa destruição e nos alertam sobre o futuro dos oceanos. Proteger o ambiente marinho é proteger a vida como um todo. Cada atitude, por menor que pareça, faz diferença. Somente com responsabilidade coletiva e ação consciente será possível garantir mares saudáveis para as próximas gerações.</p>  
+  </div>  
+</div>  <div class="container">   
+  <div class="secao" id="quiz-container">  
+    <h1>📝 Quiz – Teste seus conhecimentos!</h1>  
+    <div id="pergunta">Carregando pergunta...</div>  
+    <div id="opcoes"></div>  
+    <div id="placar"></div>  
+  </div>  
+</div>  <script>  
+// ===== FUNÇÕES PARA MÚSICA =====  
+const musica = document.getElementById('musica-principal');  
+const toggleBtn = document.getElementById('toggleMusicaBtn');  
+let estaTocando = false;  
+  
+function toggleMusica() {  
+    if (estaTocando) {  
+        musica.pause();  
+        toggleBtn.innerText = "🎵 Tocar Música";  
+        estaTocando = false;  
+    } else {  
+        musica.play().then(() => {  
+            toggleBtn.innerText = "⏸ Pausar Música";  
+            estaTocando = true;  
+        }).catch(error => {  
+            console.error("Erro ao tocar música:", error);  
+            alert("Não foi possível tocar a música. Talvez o arquivo não exista ou não carregou.");  
+        });  
+    }  
+}  
+  
+// ===== FUNÇÕES DO QUIZ =====  
+// Substituí e incluí o quiz completo com 20 perguntas  
+const quiz = [  
+    { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais", "Poluir menos", "Usar tudo sem pensar no futuro", "Desmatar"], correta: 0 },  
+    { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio", "CO₂", "Nitrogênio", "Hélio"], correta: 1 },  
+    { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão", "Reciclar", "Desperdiçar água", "Queimar lixo"], correta: 1 },  
+    { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar", "Petróleo", "Carvão", "Óleo diesel"], correta: 0 },  
+    { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água", "Dinheiro", "Tempo", "Energia"], correta: 0 },  
+    { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar", "Plantar árvores", "Queimar áreas", "Construir casas"], correta: 1 },  
+    { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra", "Frio extremo", "Chuva ácida", "Tempestades"], correta: 0 },  
+    { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público", "Queimar lixo", "Desmatar", "Poluir rios"], correta: 0 },  
+    { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar", "Jogar na rua", "Queimar lixo", "Ignorar"], correta: 0 },  
+    { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta", "Não tem importância", "Aumenta a poluição", "Diminui água"], correta: 0 },  
+  
+    // Novas perguntas  
+    { pergunta: "O que é microplástico?", opcoes: ["Plástico gigante no oceano", "Partículas menores que 5 mm", "Animal marinho", "Produto reciclável"], correta: 1 },  
+    { pergunta: "Qual animal mais sofre com ingestão de plástico?", opcoes: ["Cachorro", "Gato", "Tartaruga marinha", "Cavalo"], correta: 2 },  
+    { pergunta: "Como evitar que plástico chegue ao mar?", opcoes: ["Jogar lixo na rua", "Despejar resíduos no rio", "Descartar corretamente o lixo", "Queimar plástico"], correta: 2 },  
+    { pergunta: "O que são redes fantasmas?", opcoes: ["Redes de internet", "Redes de pesca abandonadas", "Aplicativos", "Redes de pesca novas"], correta: 1 },  
+    { pergunta: "O que a reciclagem ajuda a reduzir?", opcoes: ["Consumo de água", "Quantidade de lixo", "Velocidade do vento", "Luz solar"], correta: 1 },  
+    { pergunta: "Qual é um problema causado pelo plástico no mar?", opcoes: ["Oceano mais limpo", "Aumento da biodiversidade", "Animais presos e mortos", "Água potável"], correta: 2 },  
+    { pergunta: "Qual gás é um dos principais responsáveis pelo aquecimento global?", opcoes: ["CO₂", "Oxigênio", "Hidrogênio", "Vapor d'água"], correta: 0 },  
+    { pergunta: "Qual atitude NÃO é sustentável?", opcoes: ["Reutilizar garrafa", "Plantar árvores", "Usar canudos reutilizáveis", "Jogar lixo no mar"], correta: 3 },  
+    { pergunta: "Qual destes é um exemplo de energia limpa?", opcoes: ["Carvão", "Óleo diesel", "Energia eólica", "Combustível fóssil"], correta: 2 },  
+    { pergunta: "Por que devemos preservar o meio ambiente?", opcoes: ["Para garantir recursos no futuro", "Para destruir a natureza", "Para aumentar poluição", "Para extinguir animais"], correta: 0 }  
+];  
+  
+let indice = 0;  
+let pontos = 0;  
+  
+function carregarPergunta() {  
+    if (indice >= quiz.length) {  
+        document.getElementById("pergunta").innerText = "✅ Quiz finalizado! Sua pontuação final é: " + pontos + " de " + quiz.length;  
+        document.getElementById("opcoes").innerHTML = "";  
+        document.getElementById("placar").innerText = "";  
+        return;  
+    }  
+  
+    const p = quiz[indice];  
+    document.getElementById("pergunta").innerText = p.pergunta;  
+    const opcoesDiv = document.getElementById("opcoes");  
+    opcoesDiv.innerHTML = "";  
+  
+    p.opcoes.forEach((texto, i) => {  
+        const btn = document.createElement("div");  
+        btn.className = "opcao";  
+        btn.innerText = texto;  
+        btn.onclick = () => verificarResposta(i, btn);  
+        opcoesDiv.appendChild(btn);  
+    });  
+  
+    document.getElementById("placar").innerText = "Pontuação: " + pontos;  
+}  
+  
+function verificarResposta(i, botao) {  
+    const correta = quiz[indic
