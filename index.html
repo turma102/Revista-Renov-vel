@@ -387,29 +387,29 @@ function toggleMusica(){
   }
 }
 
-/* ===== QUIZ COMPLETO (20 perguntas) ===== */
+/* ===== QUIZ COMPLETO (20 perguntas sobre Biomas, Recursos e Conservação) ===== */
 const quiz = [
-  { pergunta: "O que é sustentabilidade?", opcoes: ["Economizar recursos naturais","Poluir menos","Usar tudo sem pensar no futuro","Desmatar"], correta: 0 },
-  { pergunta: "Qual gás contribui para o efeito estufa?", opcoes: ["Oxigênio","CO₂","Nitrogênio","Hélio"], correta: 1 },
-  { pergunta: "Qual atitude ajuda o meio ambiente?", opcoes: ["Jogar lixo no chão","Reciclar","Desperdiçar água","Queimar lixo"], correta: 1 },
-  { pergunta: "Qual é uma fonte de energia renovável?", opcoes: ["Energia solar","Petróleo","Carvão","Óleo diesel"], correta: 0 },
-  { pergunta: "O que devemos economizar para ajudar o planeta?", opcoes: ["Água","Dinheiro","Tempo","Energia"], correta: 0 },
-  { pergunta: "Qual prática protege florestas?", opcoes: ["Desmatar","Plantar árvores","Queimar áreas","Construir casas"], correta: 1 },
-  { pergunta: "O que é efeito estufa?", opcoes: ["Fenômeno que aquece a Terra","Frio extremo","Chuva ácida","Tempestades"], correta: 0 },
-  { pergunta: "Como podemos reduzir poluição?", opcoes: ["Usar transporte público","Queimar lixo","Desmatar","Poluir rios"], correta: 0 },
-  { pergunta: "Qual ação contribui para menos lixo?", opcoes: ["Reciclar","Jogar na rua","Queimar lixo","Ignorar"], correta: 0 },
-  { pergunta: "Por que economizar energia é importante?", opcoes: ["Ajuda o planeta","Não tem importância","Aumenta a poluição","Diminui água"], correta: 0 },
-
-  { pergunta: "O que é microplástico?", opcoes: ["Plástico gigante no oceano","Partículas menores que 5 mm","Animal marinho","Produto reciclável"], correta: 1 },
-  { pergunta: "Qual animal mais sofre com ingestão de plástico?", opcoes: ["Cachorro","Gato","Tartaruga marinha","Cavalo"], correta: 2 },
-  { pergunta: "Como evitar que plástico chegue ao mar?", opcoes: ["Jogar lixo na rua","Despejar resíduos no rio","Descartar corretamente o lixo","Queimar plástico"], correta: 2 },
-  { pergunta: "O que são redes fantasmas?", opcoes: ["Redes de internet","Redes de pesca abandonadas","Aplicativos","Redes de pesca novas"], correta: 1 },
-  { pergunta: "O que a reciclagem ajuda a reduzir?", opcoes: ["Consumo de água","Quantidade de lixo","Velocidade do vento","Luz solar"], correta: 1 },
-  { pergunta: "Qual é um problema causado pelo plástico no mar?", opcoes: ["Oceano mais limpo","Aumento da biodiversidade","Animais presos e mortos","Água potável"], correta: 2 },
-  { pergunta: "Qual gás é um dos principais responsáveis pelo aquecimento global?", opcoes: ["CO₂","Oxigênio","Hidrogênio","Vapor d'água"], correta: 0 },
-  { pergunta: "Qual atitude NÃO é sustentável?", opcoes: ["Reutilizar garrafa","Plantar árvores","Usar canudos reutilizáveis","Jogar lixo no mar"], correta: 3 },
-  { pergunta: "Qual destes é um exemplo de energia limpa?", opcoes: ["Carvão","Óleo diesel","Energia eólica","Combustível fóssil"], correta: 2 },
-  { pergunta: "Por que devemos preservar o meio ambiente?", opcoes: ["Para garantir recursos no futuro","Para destruir a natureza","Para aumentar poluição","Para extinguir animais"], correta: 0 }
+    { pergunta: "Qual bioma tem potencial para energias eólica e solar, mas é ameaçado pela exploração de carvão mineral?", opcoes: ["Cerrado", "Pampa", "Caatinga", "Amazônia"], correta: 1 },
+    { pergunta: "Qual prática de conservação é essencial na Mata Atlântica para ligar fragmentos de floresta e proteger a fauna?", opcoes: ["Reflorestamento de manguezais", "Criação de corredores ecológicos", "Uso de aceiros ecológicos", "Expansão de hidrelétricas"], correta: 1 },
+    { pergunta: "Qual é a principal fonte de energia limpa em crescimento na Caatinga, devido ao seu alto índice de radiação?", opcoes: ["Energia hidrelétrica", "Biomassa de cana", "Energia solar", "Energia geotérmica"], correta: 2 },
+    { pergunta: "A queima de qual combustível fóssil no Pantanal intensifica secas e incêndios, conforme mencionado nos textos?", opcoes: ["Biogás", "Petróleo e Gás", "Carvão vegetal", "Biomassa"], correta: 1 },
+    { pergunta: "Qual espécie vegetal ameaçada na Mata Atlântica é citada como um dos símbolos perdidos do bioma?", opcoes: ["Jequitibá-rosa", "Pequi", "Umburana", "Araucária"], correta: 0 },
+    { pergunta: "O que são 'aceiros ecológicos' e onde são propostos como medida de prevenção?", opcoes: ["Áreas para fauna na Amazônia", "Faixas de terra limpas para deter fogo no Pantanal", "Reservatórios de água no Cerrado", "Plantação de árvores nativas no Pampa"], correta: 1 },
+    { pergunta: "O Cerrado é conhecido como o 'berço das águas' por qual motivo?", opcoes: ["Ser totalmente alagado", "Ter o maior rio do mundo", "Ser onde nascem importantes rios brasileiros", "Ter a maior reserva de água salgada"], correta: 2 },
+    { pergunta: "Qual bioma abriga o Rio Amazonas e uma das maiores reservas de madeira tropical do mundo?", opcoes: ["Pampa", "Pantanal", "Amazônia", "Mata Atlântica"], correta: 2 },
+    { pergunta: "Qual a porcentagem aproximada da cobertura original da Mata Atlântica que resta em muitas regiões?", opcoes: ["60%", "45%", "25%", "Menos de 15%"], correta: 3 },
+    { pergunta: "A exploração de lenha e carvão vegetal é citada como um problema não renovável em qual bioma?", opcoes: ["Pampa", "Caatinga", "Amazônia", "Cerrado"], correta: 1 },
+    
+    { pergunta: "Qual mix energético é sugerido pelo WWF-Brasil como alternativa sustentável às PCHs na bacia do Alto Paraguai (Pantanal)?", opcoes: ["Gás e Carvão", "Solar, Eólica, Biomassa e Biogás", "Apenas Hidrelétrica", "Diesel e Petróleo"], correta: 1 },
+    { pergunta: "Qual recurso natural da Amazônia é o maior do mundo em volume?", opcoes: ["Madeira", "Ouro", "Água doce (Rio Amazonas)", "Gás natural"], correta: 2 },
+    { pergunta: "Qual animal, símbolo do Cerrado, é mencionado como tendo seu canto silenciado pela expansão agrícola?", opcoes: ["Mico-leão-dourado", "Veado-campeiro", "Lobo-guará", "Tatu-bola"], correta: 2 },
+    { pergunta: "O que são 'redes fantasmas', citadas no quiz anterior e um problema ambiental?", opcoes: ["Redes de internet lentas", "Fios elétricos perdidos", "Redes de pesca abandonadas no mar", "Programas de computador antigos"], correta: 2 },
+    { pergunta: "Qual é o nome da prática de manejo do pasto que não degrada os campos nativos, proposta para conservação no Pampa?", opcoes: ["Pecuária Extensiva", "Pecuária Sustentável", "Monocultura Intensiva", "Pasto Orgânico"], correta: 1 },
+    { pergunta: "Qual bioma tem como proposta de conservação o 'Manejo florestal sustentável' e o combate ao tráfico de animais silvestres?", opcoes: ["Cerrado", "Caatinga", "Amazônia", "Pampa"], correta: 2 },
+    { pergunta: "Qual é a espécie mais afetada pela substituição dos campos nativos por monoculturas no Pampa?", opcoes: ["Onça-pintada", "Veado-campeiro", "Ararinha-azul", "Jacutinga"], correta: 1 },
+    { pergunta: "A energia solar fotovoltaica foi usada no Pantanal para substituir qual fonte de energia poluente em comunidades?", opcoes: ["Carvão mineral", "Geradores a diesel", "PCHs", "Lenha"], correta: 1 },
+    { pergunta: "Qual gás de efeito estufa é liberado em grandes quantidades pela queima de combustíveis fósseis (além do $CO_2$)?", opcoes: ["Oxigênio ($O_2$)", "Nitrogênio ($N_2$)", "Metano ($CH_4$)", "Vapor d'água"], correta: 2 },
+    { pergunta: "Qual espécie vegetal da Caatinga está em risco, conforme listado nos textos?", opcoes: ["Pau-brasil", "Araucária", "Umburana", "Ipê"], correta: 2 }
 ];
 
 let indice = 0;
@@ -463,6 +463,7 @@ document.addEventListener("DOMContentLoaded", carregarPergunta);
 
 </body>
 </html>
+
 
 
 
